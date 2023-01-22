@@ -6,8 +6,6 @@
 
 In Cloud Computing for Big Data Analytics, there will be two sorts of student jobs: lab assignments and one project. Some lab sessions include pre-session homework.
 
-Students are expected to complete and submit the assigned pre-lab homework before each lab session.
-
 ## Lab assignments
 Students will begin by creating an essential toolbox to get them started in the Cloud. It will prepare them to be able to practice with APIs, the doors in the Cloud. That will also allow students to be able to mine the deluge of data coming from the Cloud or using new advanced analytics services available nowadays in the Cloud. Finally, we will look under the hood of these high-level analytics services in the Cloud, either regarding software or hardware, to understand how to meet high-performance requirements. The final goal is to provide code examples that smoothly can get the student started.
 
@@ -33,7 +31,7 @@ Students will begin by creating an essential toolbox to get them started in the 
 
 #### Deadlines
 
-Each lab session must be pushed **at most seven days after** it is scheduled to be started.
+Each lab session must be pushed to the corresponding repo **at most seven days after** it is scheduled to be started.
 
 
 
@@ -43,7 +41,7 @@ I would like to thank Prof. Jordi Torres for developing the initial version of s
 ## Course Project
 The course project will be completed in teams of **five students enrolled in the same sub-group**.  Before starting the development, students require the teacher's approval of their course project proposal.
 
-The student project is meant to allow students to put into practice many concepts that they learn in this subject. It is an exercise to help students to consolidate their learning, not a way to obtain a flawlessly working prototype.
+The student project is meant to allow students to put into practice many concepts that they learn during this subject. It is an exercise to help students to consolidate their learning, not a way to obtain a flawlessly working prototype.
 
 Students are supposed to invest forty hours of their time (one hundred sixty hours the four members). If the group is too ambitious in the scope of the project, there is a high chance of running out of time.
 
@@ -71,7 +69,7 @@ One of the most important forms of open data is open government data (OGD), whic
 
 You can also find some [addtional Open Data sources](https://www.freecodecamp.org/news/https-medium-freecodecamp-org-best-free-open-data-sources-anyone-can-use-a65b514b0f2d/).
 
-Select some Open Data Sources and create a project that allows people to benefit from the mix of different types of open data. For example, [PREDIK Data-Driven](https://predikdata.com/en/servicio/retail-english/) uses a mix of data to help brick-and-mortar business find the best location.
+Select some Open Data Sources and create a project that allows people to benefit from the mix of different types of open data. For example, [PREDIK Data-Driven](https://predikdata.com/market-potential-analysis-for-the-opening-of-new-stores/) uses a mix of data to help brick-and-mortar business find the best location.
 
 ### Project requirements
 
