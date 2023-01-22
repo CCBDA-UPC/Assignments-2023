@@ -42,6 +42,5 @@ def preprocess(s, lowercase=False):
         tokens = [token if emoticon_re.search(token) else token.lower() for token in tokens]
     return tokens
 
-tweet = '@Priscilla: The world is flat! #flat-world :-> email me at   
-            priscilla.Presley%23@dodo.gmail.com,  https://neverland.ut'
+tweet = '@Priscilla: The world is flat! #flat-world :-> email me at priscilla.Presley%23@dodo.gmail.com,  https://neverland.ut'
 print(preprocess(tweet))
