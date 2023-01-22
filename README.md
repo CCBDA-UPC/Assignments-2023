@@ -1,4 +1,4 @@
-# Cloud Computing for Big Data Analytics practical jobs
+# Cloud Computing for Big Data Analytics practical assignments
 
 >Tell me and I forget. Teach me, and I remember. Involve me, and I learn.
 >
