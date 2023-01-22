@@ -147,12 +147,9 @@ Between 6000 and  10000 English words, adding any images considered necessary;
 
 #### Deadlines
 
-Students assigned to a group: **March-30 23:55**
-
-First draft: **April-14 23:55**
-
-Final presentation and report: **May-26 23:55**
-
+- Students assigned to a group: **March-30 23:55**
+- First draft: **April-14 23:55**
+- Final presentation and report: **May-26 23:55**
 
 ### Evaluation criteria
 
