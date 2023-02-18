@@ -21,13 +21,13 @@ Follow the modules and submit the knowledge checks at the end:
 ## Task 1.1:
 Install Python on your laptop.
 
-Create a folder for the assignment `Lab1` and install a Python virtual environment under a folder named `Lab1/venv`
-
-Activate the virtual environment and install the necessary pip packages.
-
 [PyCharm](https://www.jetbrains.com/pycharm/) is a very popular [IDE](https://en.wikipedia.org/wiki/Integrated_development_environment) that will make your life much easier. It supports execution and debugging of Python, Python environments, code version control, it has a built-in terminal and all kinds of plugins. Moreover, it is [completely free for students](https://www.jetbrains.com/buy/classroom/?product=pycharm).
 
 You can [create a new PyCharm project](https://www.jetbrains.com/help/pycharm/creating-and-managing-projects.html) and [Configure a virtual environment](https://www.jetbrains.com/help/pycharm/creating-virtual-environment.html)
+
+Create a folder for the assignment `Lab1` and install a Python virtual environment under a folder named `Lab1/venv`
+
+Activate the virtual environment and install the necessary pip packages.
 
 
 ## Task 1.2:
