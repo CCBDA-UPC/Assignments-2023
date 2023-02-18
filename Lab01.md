@@ -4,48 +4,30 @@ In this Lab session, you will be asked to put into practice the basic knowledge 
 
 #  Pre-lab homework 0
 Take a look at the following hands-on guides to check if you already have the basic knowledge to follow this course. If not, please do the assignments.
-* Hands-on 0: [Run a Linux OS in a Virtual Machine](../../../Cloud-Computing-QuickStart/blob/master/LinuxOS-VirtualMachine.md) (Only required for Windows users)
+
 * Hands-on 1: [Git and GitHub Quick Start](../../../Cloud-Computing-QuickStart/blob/master/Git-Github-Quick-Start.md)
 * Hands-on 2: [Markdown syntax](../../../Cloud-Computing-QuickStart/blob/master/Quick-Start-Markdown.md)
 * Hands-on 3: [Python Quick Start](../../../Cloud-Computing-QuickStart/blob/master/Python-Quick-Start.md)
 * Hands-on 4: [Python Development Environment Quick Start](../../../Cloud-Computing-QuickStart/blob/master/Python-Development-Environment-Quick-Start.md)
 
 #  Pre-lab homework 1
-Create an AWS account and install AWS CLI following the following hands-on:
-* Hands-on 5: [Getting Started in the Cloud with AWS](../../../Cloud-Computing-QuickStart/blob/master/Quick-Start-AWS.md)
+Go to the AWS Academy and log into the course [AWS Academy Cloud Foundations](https://awsacademy.instructure.com/courses/40548)
 
-Have this URL present in case you need to use the [AWS CLI](https://aws.amazon.com/cli/). 
+Follow 
+- Module 1 - Cloud Concepts Overview
+- Module 2 - Cloud Economics and Billing
+
 #  Tasks for Lab session #1
 ## Task 1.1:
 Install Python on your laptop.
 
-For these lab sessions we advice you to create a new anaconda environment using the bare minimum amount of Python packages. You will be adding more packages as you need them later.
+Create a folder for the assignment `assignment_1` and install a Python virtual environment under a folder named `assignment_1/venv`
 
-Once the new environment is set you can hover and see the path where the python interpreter and the packages have been installed.
-
-<p align="center"><img src="./images/Lab01-AnacondaEnviron.png " alt="New Anaconda Environment" title="New Anaconda Environment"/></p>
-
-You can also open a terminal and examine your new environment.
-
- <p align="center"><img src="./images/Lab01-AnacondaTerminal.png " alt="Anaconda terminal" title="Anaconda terminal"/></p>
-
-Using the Anaconda terminal, some unix commands also work in MS-Windows:
-
-```bash
-(CCBDA_UPC) C:\prompt> which python
-/cygdrive/c/Anaconda/envs/CCBDA_UPC/python
-```
-
-That answer means that your python interpreter is at `c:\Anaconda\envs\CCBDA_UPC\python`. You will get a similar response if you are using a unix OS.
-
-If you need to use the commands from that new environment you must make sure that the `PATH` variable (both windows and unix) contains the directory. To update that variable for windows. If your environment has a different name or it has been created in a different path change the command accordingly.
-
-```bash
-SET PATH=%PATH%;c:\Anaconda\envs\CCBDA_UPC;c:\Anaconda\envs\CCBDA_UPC\Scripts;
-```
+Activate the virtual environment and install the necessary pip packages.
 
 [PyCharm](https://www.jetbrains.com/pycharm/) is a very popular [IDE](https://en.wikipedia.org/wiki/Integrated_development_environment) that will make your life much easier. It supports execution and debugging of Python, Python environments, code version control, it has a built-in terminal and all kinds of plugins. Moreover, it is [completely free for students](https://www.jetbrains.com/buy/classroom/?product=pycharm).
 
+You can [create a new PyCharm project](https://www.jetbrains.com/help/pycharm/creating-and-managing-projects.html) and [Configure a virtual environment](https://www.jetbrains.com/help/pycharm/creating-virtual-environment.html)
 
 
 ## Task 1.2:
