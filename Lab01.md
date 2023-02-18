@@ -83,9 +83,9 @@ Don't forget to **individually** submit the knowledge check of the AWS Academy c
 
 # How to submit this assignment:
 
-Push to the repo, at least, the files `README.md` with your responses to the above questions.
+Push to the repo, at least, the files `README.md` with your responses to the above questions. Make sure that your explanations are clear and explain what you've done to complete each of the above steps.
 
-Include the code and screenshot for task 1.7
+Include the code and screenshot for task 1.7 as separated files linked into the README.md explanation.
 
 Make sure that you have updated your local GitHub repository (using the `git`commands `add`, `commit` and `push`) with all the files generated during this session.
 
