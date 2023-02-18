@@ -16,6 +16,7 @@ Go to the AWS Academy and log into the course [AWS Academy Cloud Foundations](ht
 Follow the modules and submit the knowledge checks at the end:
 - Module 1 - Cloud Concepts Overview
 - Module 2 - Cloud Economics and Billing
+- Module 3 - AWS Global Infrastructure Overview
 
 #  Tasks for Lab session #1
 ## Task 1.1:
