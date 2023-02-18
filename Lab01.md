@@ -13,7 +13,7 @@ Take a look at the following hands-on guides to check if you already have the ba
 #  Pre-lab homework 1
 Go to the AWS Academy and log into the course [AWS Academy Cloud Foundations](https://awsacademy.instructure.com/courses/40548)
 
-Follow 
+Follow the modules and submit the knowledge checks at the end:
 - Module 1 - Cloud Concepts Overview
 - Module 2 - Cloud Economics and Billing
 
@@ -21,7 +21,7 @@ Follow
 ## Task 1.1:
 Install Python on your laptop.
 
-Create a folder for the assignment `assignment_1` and install a Python virtual environment under a folder named `assignment_1/venv`
+Create a folder for the assignment `Lab1` and install a Python virtual environment under a folder named `Lab1/venv`
 
 Activate the virtual environment and install the necessary pip packages.
 
@@ -76,11 +76,9 @@ Update your `README.md` file to make that screenshot appear.
 ## Task 1.8:
 Update your remote GitHub repository with the updated `README.md`and the new file `Lab1.AWSterminal.png` using the `git`commands `add`, `commit` and `push`.
 ## Task 1.9:
-Create an S3 bucket and synchronize your repository there. Take a screenshot of the browser window showing your S3 bucket. Include that screenshot in your local repository, on your laptop, with the name `Lab1.S3Bucket.png`.
-Update your `README.md` file to make that screenshot appear.
+Don't forget to **individually** submit the knowledge check of the AWS Academy course.
 
 **Questions: How long have you been working on this session? What have been the main difficulties you have faced and how have you solved them?** Add your answers to `README.md`.
-
 
 
 # How to submit this assignment:
