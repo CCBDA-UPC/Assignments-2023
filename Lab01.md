@@ -68,15 +68,8 @@ It is better that you manage git by hand. Once you become familiar with git you 
 
 ## Task 1.5:
 Update the `README.md` file including all the information about your group (member's name and email addresses).
+
 ## Task 1.6:
-Create an EC2 instance at AWS. Login and pull down all the contents of your GitHub repository to make an exact clone by using `git clone` command.
-## Task 1.7:
-Execute the program `Lab1.guessnumber.py` in your AWS instance. Take a screenshot of the terminal window that are you using as proof.
-Include that screenshot in your local repository, on your laptop, with the name `Lab1.AWSterminal.png`.
-Update your `README.md` file to make that screenshot appear.
-## Task 1.8:
-Update your remote GitHub repository with the updated `README.md`and the new file `Lab1.AWSterminal.png` using the `git`commands `add`, `commit` and `push`.
-## Task 1.9:
 Don't forget to **individually** submit the knowledge check of the AWS Academy course.
 
 **Questions: How long have you been working on this session? What have been the main difficulties you have faced and how have you solved them?** Add your answers to `README.md`.
@@ -85,8 +78,6 @@ Don't forget to **individually** submit the knowledge check of the AWS Academy c
 # How to submit this assignment:
 
 Push to the repo, at least, the files `README.md` with your responses to the above questions. Make sure that your explanations are clear and explain what you've done to complete each of the above steps.
-
-Include the code and screenshot for task 1.7 as separated files linked into the README.md explanation.
 
 Make sure that you have updated your local GitHub repository (using the `git`commands `add`, `commit` and `push`) with all the files generated during this session.
 
