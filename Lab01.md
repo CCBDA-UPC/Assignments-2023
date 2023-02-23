@@ -51,8 +51,6 @@ Use the `private repository` **https://github.com/CCBDA-UPC/2023-1-xx** that you
 
 Populate the `private repository` with the contents that you have just cloned.
 
-## Task 1.4:   
-Update your remote repository from the local repository on your laptop:
 ```
 echo "# 2023-1-xx" >> README.md
 git init
@@ -65,10 +63,10 @@ git push -u origin master
 
 It is better that you manage git by hand. Once you become familiar with git you can use PyCharm to save you some typing.
 
-## Task 1.5:
+## Task 1.4:
 Update the `README.md` file including all the information about your group (member's name and email addresses).
 
-## Task 1.6:
+## Task 1.5:
 Don't forget to **individually** submit the knowledge check of the AWS Academy course.
 
 **Questions: How long have you been working on this session? What have been the main difficulties you have faced and how have you solved them?** Add your answers to `README.md`.
