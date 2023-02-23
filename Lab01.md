@@ -62,7 +62,6 @@ git commit -m "first commit"
 git remote add origin https://github.com//CCBDA-UPC/2023-1-xx.git
 git push -u origin master
 ```
-> change `<username>` for your Github account
 
 It is better that you manage git by hand. Once you become familiar with git you can use PyCharm to save you some typing.
 
