@@ -349,7 +349,7 @@ We are now ready for next Lab session where we will be mining streaming Twitter 
 
 # How to submit this assignment:
 
-Use the **private** repo named *https://github.com/CCBDA-UPC/2022-2-xx*. It needs to have, at least, two files `README.md` with your responses to the above questions and `authors.json` with both members email addresses:
+Use the **private** repo named *https://github.com/CCBDA-UPC/2023-2-xx*. It needs to have, at least, two files `README.md` with your responses to the above questions and `authors.json` with both members email addresses:
 
 ```json5
 {
@@ -362,4 +362,4 @@ Use the **private** repo named *https://github.com/CCBDA-UPC/2022-2-xx*. It need
 
 Make sure that you have updated your local GitHub repository (using the `git`commands `add`, `commit` and `push`) with all the files generated during this session. 
 
-**Before the deadline**, all team members shall push their responses to their private *https://github.com/CCBDA-UPC/2022-2-xx* repository.
+**Before the deadline**, all team members shall push their responses to their private *https://github.com/CCBDA-UPC/2023-2-xx* repository.
