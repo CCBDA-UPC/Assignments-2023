@@ -7,6 +7,7 @@ In this Lab session, we are going to discuss the overall structure of a tweet an
    * [Task 2.1: Geting Started with NLTK](#NLTK)
    * [Task 2.2: Getting Started with `tweepy`](#tweepy)
    * [Task 2.3: Tweet pre-processing](#preproc)
+   * [Task 2.4: Continue studying AWS](#aws)
 
 <a name="Prelab"/>
 
@@ -283,6 +284,15 @@ Keep track of the execution examining ten different tweets extracted using tweep
 **Q23: Add the code to `Twitter_2.py` and your comments to `README.md`.**
 
 We are now ready for next Lab session where we will be mining streaming Twitter data.
+
+<a name="aws"/>
+
+## Task 2.4:  Continue studying AWS
+
+Follow the modules and submit the knowledge checks at the end:
+- Module 4 - AWS Cloud Security
+- Module 6 - Compute
+- Module 7 - Storage
 
 **Q24: How long have you been working on this session? What have been the main difficulties you have faced and how have you solved them?** Add your answers to `README.md`.
 
