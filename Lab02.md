@@ -161,9 +161,7 @@ Create a file named `Twitter_1.py` and include the code to access Twitter on our
 import os
 import tweepy
 
-bearer_token = os.environ['BEARER_TOKEN']
-
-client = tweepy.Client(bearer_token=bearer_token)
+client = tweepy.Client(bearer_token=os.environ['BEARER_TOKEN'])
 ```
 
 To be sure that everything is correctly installed print the main information of Google account:
