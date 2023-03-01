@@ -177,21 +177,7 @@ The `client` variable is now our entry point for most of the operations with Twi
 
 Tweepy provides Python access to the well documented [**REST Twitter API**](https://docs.tweepy.org/en/stable/client.html). In the referred documentation there is a list of REST calls and extensive information on all the key areas where developers typically engage with the Twitter platform.
 
-Using tweepy, it's possible to retrieve objects of any type and use any method that the official Twitter API offers. In order to search Tweets from the last 7 days, you can use the search_recent_tweets function available in Tweepy. You will have to pass it a [search query](https://github.com/twitterdev/getting-started-with-the-twitter-api-v2-for-academic-research/blob/main/modules/5-how-to-write-search-queries.md) to specify the data that you are looking for. In the example below, we are searching for Tweets from the last days from the Twitter handle suhemparack and we are excluding retweets using `-is:retweet`.
-
-By default, in your response, you will only get the Tweet ID and Tweet text for each Tweet. If you need additional Tweet fields such as [context_annotations](https://developer.twitter.com/en/docs/twitter-api/annotations/overview), created_at (the time the tweet was created) etc., you can specifiy those fields using the tweet_fields parameter, as shown in the example below. Learn more about available fields [here](https://developer.twitter.com/en/docs/twitter-api/fields). By default, a request returns 10 Tweets. If you want more than 10 Tweets per request, you can specify that using the max_results parameter. The maximum Tweets per request is 100.
-
-```python
-query = 'from:Google -is:retweet'
-
-tweets = client.search_recent_tweets(query=query, tweet_fields=['context_annotations', 'created_at'], max_results=100)
-
-for tweet in tweets.data:
-    print(tweet.text)
-    if len(tweet.context_annotations) > 0:
-        print(tweet.context_annotations)
-
-```
+Using tweepy, it's possible to retrieve objects of any type and use any method that the official Twitter API offers. 
 
 Before you run the program, you need to instantiate the process environment variables that contain your credentials. **Remember** that every time you close the session, you will need to set them again. Use your Bash shell `.bashrc` to automate this process. (Create a FILE.bat in MS-Windows or use the equivalent init files for other Unix shells).
 
@@ -208,36 +194,21 @@ If you want to run/debug your program with PyCharm you can setup the environment
 **NOTE:** You are encouraged to explore alternative ways of detaching private configuration details form the application code. Check [configparser](https://docs.python.org/3.4/library/configparser.html) or [decouple](https://pypi.python.org/pypi/python-decouple) as options.
 
 ### Task 2.2.2: Accessing Tweets
-Tweepy provides the convenient `Cursor` interface to iterate through different types of objects. For example, we can read our own Twitter home timeline using the code below.
+In order to search Tweets from the last 7 days, you can use the search_recent_tweets function available in Tweepy. You will have to pass it a [search query](https://github.com/twitterdev/getting-started-with-the-twitter-api-v2-for-academic-research/blob/main/modules/5-how-to-write-search-queries.md) to specify the data that you are looking for. In the example below, we are searching for Tweets from the last days from the Twitter handle suhemparack and we are excluding retweets using `-is:retweet`.
+
+By default, in your response, you will only get the Tweet ID and Tweet text for each Tweet. If you need additional Tweet fields such as [context_annotations](https://developer.twitter.com/en/docs/twitter-api/annotations/overview), created_at (the time the tweet was created) etc., you can specifiy those fields using the tweet_fields parameter, as shown in the example below. Learn more about available fields [here](https://developer.twitter.com/en/docs/twitter-api/fields). By default, a request returns 10 Tweets. If you want more than 10 Tweets per request, you can specify that using the max_results parameter. The maximum Tweets per request is 100.
 
 ```python
-# we use 1 to limit the number of tweets we are reading 
-# and we only access the `text` of the tweet
-for status in tweepy.Cursor(api.home_timeline).items(1):
-    print(status.text) 
+query = 'from:Google -is:retweet'
+
+tweets = client.search_recent_tweets(query=query, tweet_fields=['context_annotations', 'created_at'], max_results=100)
+
+for tweet in tweets.data:
+    print(tweet.text)
+    if len(tweet.context_annotations) > 0:
+        print(tweet.context_annotations)
 ```
-The `status` variable is an instance of the `Status()` class: a friendly wrapper to access the tweet data. The JSON response from the Twitter API is available at the attribute _json (with a leading underscore), which is not the raw JSON string, but a dictionary.
 
-```python
-import json
-
-for status in tweepy.Cursor(api.home_timeline).items(1):
-    print(json.dumps(status._json, indent=2))
-    
-```
-What if we wanted to have a list of 10 of our followers (friends who follow you)?
- 
-```python
-for follower in tweepy.Cursor(api.friends).items(1):
-    print(json.dumps(follower._json, indent=2))
-
-```
-And how about a list of some of our tweets?
-
-```python
-for tweet in tweepy.Cursor(api.user_timeline).items(1):
-    print(json.dumps(tweet._json, indent=2))
-```    
 As a conclusion, notice that using `tweepy` we can quickly collect all the tweet information and store it in JSON format, reasonably easy to convert into different data models (many storage systems provide import feature).
 
 Create a file named `Twitter_2.py` and use the previous API presented to obtain information about your tweets.
