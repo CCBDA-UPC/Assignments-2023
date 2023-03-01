@@ -187,7 +187,7 @@ If you want to run/debug your program with PyCharm you can setup the environment
 
  <p align="center"><img src="./images/Lab02-PyCharmEnv.png " alt="PyCharm Env" title="PyCharm Env"/></p>
 
-**Q221: Is the data printed correctly? Is it yours?** Add your answers to `README.md`.
+**Q221: Is the data printed correctly?** Add your answers to `README.md`.
 
 **NOTE:** You are encouraged to explore alternative ways of detaching private configuration details form the application code. Check [configparser](https://docs.python.org/3.4/library/configparser.html) or [decouple](https://pypi.python.org/pypi/python-decouple) as options.
 
@@ -216,29 +216,7 @@ Create a file named `Twitter_2.py` and use the previous API presented to obtain 
 <a name="preproc"/>
 
 ## Task 2.3:  Tweet pre-processing
-We are going to enter now into more detail regarding the overall structure of a tweet and discuss how to pre-process its text before we can go into a more interesting analysis in the next Lab session.
-
 The code used in this Lab session is using part of the work done by [Marco Bonzanini](https://marcobonzanini.com/2015/03/02/mining-twitter-data-with-python-part-1/). As Marco indicates, it is far from perfect, but it’s a good starting point to become aware of the complexity of the problem, and it is reasonably easy to extend.
-
-Let’s have a look at the structure of the previous tweet that you printed.
-
-The main attributes are:
-
-* text: text of the tweet itself
-* created_at:  creation date
-* favorite_count, retweet_count: the number of favorites and retweets
-* favorited, retweeted: boolean stating whether the authenticated user (you) have favorited or retweeted this tweet
-* lang: the language of the tweet (e.g. “en” for English)
-* id: the tweet identifier
-* place, coordinates, geo: geo-location information if available
-* user: the author’s full profile
-* entities: list of entities such as URLs, @-mentions, hashtags, and symbols
-* in_reply_to_user_id: user identifier if the tweet is a reply to a specific user
-* in_reply_to_status_id: status identifier id the tweet is a reply to a specific status
-* \_json: This is a dictionary with the JSON response of the status
-* author: The tweet author
-
-As you can see, there is enough information to play. All the \*_id fields also have a \*_id_str counterpart, containing the same information as a string rather than a big int (to avoid overflow problems). 
 
 We are going to focus on looking for the text of a tweet and breaking it down into words. While tokenization is a well-understood problem with several out-of-the-box solutions from popular libraries, Twitter data pose some challenges because of the nature of the language used.
 
