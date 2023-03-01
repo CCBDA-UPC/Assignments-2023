@@ -140,7 +140,7 @@ On the other hand, the Streaming API looks into the future: we can retrieve all 
 
 Twitter provides a programming language independent API as a [RESTfull webservice](https://en.wikipedia.org/wiki/Representational_state_transfer). Such API allows anybody to interact with the Main Model classes of Twitter: `Tweets`, `Users`, `Entities` and `Places`. 
 
-Since we are using Python, to interact with the Twitter APIs, we need a Python client that implements the different calls to the RESTfull API itself. There are several options, as we can see at the [official documentation](https://dev.twitter.com/resources/twitter-libraries). We are going to choose  [Tweepy](http://tweepy.readthedocs.io/en/v3.5.0/) for this lab.
+Since we are using Python, to interact with the Twitter APIs, we need a Python client that implements the different calls to the RESTfull API itself. There are several options, as we can see at the [official documentation](https://dev.twitter.com/resources/twitter-libraries). We are going to choose  [Tweepy](https://docs.tweepy.org/en/stable/) for this lab.
 
 One easy way to install the latest version is by using pip/easy_install to pull it from [PyPI](https://pypi.python.org/pypi) to your local directory:
 
@@ -154,56 +154,49 @@ Tweepy is also available from [conda forge](https://conda-forge.org/feedstocks/)
 _$ conda install -c conda-forge tweepy
 ```
 
-You may also want to use Git to clone the repository from Github and install it manually:
-
-```bash
-_$ git clone https://github.com/tweepy/tweepy.git
-_$ cd tweepy
-_$ python setup.py install
-```
 
 Create a file named `Twitter_1.py` and include the code to access Twitter on our behalf. We need to use the OAuth interface:
 
 ```python
 import os
 import tweepy
-from tweepy import OAuthHandler
- 
-consumer_key = os.environ['CONSUMER_KEY']
-consumer_secret = os.environ['CONSUMER_SECRET']
-access_token = os.environ['ACCESS_TOKEN']
-access_secret = os.environ['ACCESS_SECRET']
 
-auth = OAuthHandler(consumer_key, consumer_secret)
-auth.set_access_token(access_token, access_secret)
- 
-api = tweepy.API(auth)
+bearer_token = os.environ['BEARER_TOKEN']
+
+client = tweepy.Client(bearer_token=bearer_token)
 ```
-The `api` variable is now our entry point for most of the operations with Twitter. 
 
-Tweepy provides Python access to the well documented [**REST Twitter API**](https://developer.twitter.com/en/docs/api-reference-index). In the referred documentation there is a list of REST calls and extensive information on all the key areas where developers typically engage with the Twitter platform.
-
-Using tweepy, it's possible to retrieve objects of any type and use any method that the official Twitter API offers. 
-
-To be sure that everything is correctly installed print the main information of your Twitter account. After creating the `User` object, the `me()` method returns who is the authenticated user:
+To be sure that everything is correctly installed print the main information of Google account:
 
 ```python
-user = api.me()
- 
-print('Name: ' + user.name)
-print('Location: ' + user.location)
-print('Followers: ' + str(user.followers_count))
-print('Created: ' + str(user.created_at))
-print('Description: ' + str(user.description))
+user = client.get_user(username='Google')
+print('Name: ' + user.data.name)
+
+```
+The `client` variable is now our entry point for most of the operations with Twitter. 
+
+Tweepy provides Python access to the well documented [**REST Twitter API**](https://docs.tweepy.org/en/stable/client.html). In the referred documentation there is a list of REST calls and extensive information on all the key areas where developers typically engage with the Twitter platform.
+
+Using tweepy, it's possible to retrieve objects of any type and use any method that the official Twitter API offers. In order to search Tweets from the last 7 days, you can use the search_recent_tweets function available in Tweepy. You will have to pass it a [search query](https://github.com/twitterdev/getting-started-with-the-twitter-api-v2-for-academic-research/blob/main/modules/5-how-to-write-search-queries.md) to specify the data that you are looking for. In the example below, we are searching for Tweets from the last days from the Twitter handle suhemparack and we are excluding retweets using `-is:retweet`.
+
+By default, in your response, you will only get the Tweet ID and Tweet text for each Tweet. If you need additional Tweet fields such as [context_annotations](https://developer.twitter.com/en/docs/twitter-api/annotations/overview), created_at (the time the tweet was created) etc., you can specifiy those fields using the tweet_fields parameter, as shown in the example below. Learn more about available fields [here](https://developer.twitter.com/en/docs/twitter-api/fields). By default, a request returns 10 Tweets. If you want more than 10 Tweets per request, you can specify that using the max_results parameter. The maximum Tweets per request is 100.
+
+```python
+query = 'from:Google -is:retweet'
+
+tweets = client.search_recent_tweets(query=query, tweet_fields=['context_annotations', 'created_at'], max_results=100)
+
+for tweet in tweets.data:
+    print(tweet.text)
+    if len(tweet.context_annotations) > 0:
+        print(tweet.context_annotations)
+
 ```
 
 Before you run the program, you need to instantiate the process environment variables that contain your credentials. **Remember** that every time you close the session, you will need to set them again. Use your Bash shell `.bashrc` to automate this process. (Create a FILE.bat in MS-Windows or use the equivalent init files for other Unix shells).
 
 ```bash
-_$ export CONSUMER_KEY="oEeC30R9-YOUR-OWN-DATA-y4YlY94KIZ"
-_$ export CONSUMER_SECRET="qfeRShB54Zf-YOUR-OWN-DATA-4djddUb6FcsivoZ4gkOMX"
-_$ export ACCESS_TOKEN="dsSW6K26GM-YOUR-OWN-DATA-IAh80cx4Kmg1VOOi142542"
-_$ export ACCESS_SECRET="DNvRZMdzRZWaFimgOZ8gd9-YOUR-OWN-DATA-GcKbn3ERDc7"
+_$ export BEARER_TOKEN="oEeC30R9-YOUR-OWN-DATA-y4YlY94KIZ"
 ```
 
 If you want to run/debug your program with PyCharm you can setup the environment variables at the run/debug configuration:
