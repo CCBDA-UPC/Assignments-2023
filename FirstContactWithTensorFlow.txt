@@ -257,8 +257,7 @@ reader prefers to opt for a paper copy, you can purchase the
 book through Amazon.com portal. 
 A Spanish version is also available. Indeed, this book is the 
 translation of the Spanish one, which was finished last Janu-
-ary and it was presented in the GEMLeB Meetup (Grup d'Es-
-tudi de Machine Learning de Barcelona) of which I am one of 
+ary and it was presented in the GEMLeB Meetup (Grup d Estudi de Machine Learning de Barcelona) of which I am one of
 the coorganizers. 
 Let me thank you for reading this book! It comforts me and 
 justifies my effort for writing it. Those who know me, know 

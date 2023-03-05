@@ -8,6 +8,7 @@ In this Lab session, we are going to discuss the overall structure of a tweet an
    * [Task 2.2: Getting Started with `tweepy`](#tweepy)
    * [Task 2.3: Tweet pre-processing](#preproc)
    * [Task 2.4: Continue studying AWS](#aws)
+   * [Task 2.5: Conter Social](#countersocial)
 
 <a name="Prelab"/>
 
@@ -91,7 +92,7 @@ We can remove the punctuation, inside get_tokens(), by applying a regular expres
 
 ```python
     lowers = text.lower()
-    no_punctuation = re.sub(r'[^\w\s]','',lowers)
+    no_punctuation = re.sub(r'[^\w\s]',' ',lowers)
     tokens = nltk.word_tokenize(no_punctuation)
 ```
 Create a new file named `WordCountTensorFlow_2.py` that computes and prints the 10 most common words without punctuation characters as well as the total number of words remaining.
@@ -293,6 +294,278 @@ Follow the modules and submit the knowledge checks at the end:
 - Module 4 - AWS Cloud Security
 - Module 6 - Compute
 - Module 7 - Storage
+
+<a name="countersocial"/>
+
+## Task 2.5: Counter social
+
+In their own words: *CounterSocial is the first Social Network Platform to take a zero-tolerance stance to hostile nations, bot accounts and trolls who are weaponizing OUR social media platforms and freedoms to engage in influence operations against us*
+
+Since Elon Musk's acquisition of Twitter and the uncertainty generated, Counter Social is one of the alternatives. For the needs of this and future sessions it is posible use an API to obtain information similar to tweets to be analyzed.
+
+Create a file named `counterSocial1.py` and pull information from that social platform by simply using their [public data REST API](https://counter.social/apidocs/client/public/index.html):
+
+```python
+import requests
+import json
+
+response = requests.get('https://Counter.Social/api/v1/timelines/public')
+if response.status_code != 200:
+    print (response.status_code, response.text)
+
+responses = json.loads(response.text)
+
+for item in responses:
+    print(json.dumps(item, indent=3))
+
+```
+A list of 20 items will be returned. Each item has a structure as shown below. Having "content" as the text published by "account"
+
+````json
+{
+   "id": "109970355188889401",
+   "created_at": "2023-03-05T11:07:32.956Z",
+   "in_reply_to_id": null,
+   "in_reply_to_account_id": null,
+   "sensitive": false,
+   "spoiler_text": "",
+   "visibility": "public",
+   "language": "en",
+   "uri": "https://counter.social/users/MisterE/statuses/109970355188889401",
+   "content": "<p>Pearl Jam - Even Flow (Official  </p><p>Video) <a href=\"https://youtu.be/CxKWTzr-k6s\" rel=\"nofollow noopener\" target=\"_blank\"><span class=\"invisible\">https://</span><span class=\"\">youtu.be/CxKWTzr-k6s</span><span class=\"invisible\"></span></a> via <span class=\"h-card\"><a href=\"https://counter.social/@YouTube\" class=\"u-url mention\">@<span>YouTube</span></a></span>   </p><p><a href=\"https://counter.social/tags/cosomusic\" class=\"mention hashtag\" rel=\"tag\">#<span>cosomusic</span></a></p>",
+   "url": "https://counter.social/@MisterE/109970355188889401",
+   "replies_count": 0,
+   "reblogs_count": 0,
+   "favourites_count": 0,
+   "reblog": null,
+   "application": null,
+   "account": {
+      "id": "605",
+      "username": "MisterE",
+      "acct": "MisterE",
+      "display_name": "",
+      "locked": false,
+      "bot": false,
+      "created_at": "2017-11-11T05:10:32.926Z",
+      "note": "<p></p>",
+      "url": "https://counter.social/@MisterE",
+      "avatar": "https://counter.social/system/accounts/avatars/000/000/605/original/faf96b49106c18c2.png?1510382931",
+      "avatar_static": "https://counter.social/system/accounts/avatars/000/000/605/original/faf96b49106c18c2.png?1510382931",
+      "header": "https://counter.social/headers/original/missing.png",
+      "header_static": "https://counter.social/headers/original/missing.png",
+      "followers_count": 1954,
+      "following_count": 3467,
+      "statuses_count": 83316,
+      "emojis": [],
+      "fields": []
+   },
+   "media_attachments": [],
+   "mentions": [
+      {
+         "id": "111223",
+         "username": "YouTube",
+         "url": "https://counter.social/@YouTube",
+         "acct": "YouTube"
+      }
+   ],
+   "tags": [
+      {
+         "name": "cosomusic",
+         "url": "https://counter.social/tags/cosomusic"
+      }
+   ],
+   "emojis": [],
+   "card": {
+      "url": "https://youtu.be/CxKWTzr-k6s",
+      "title": "Pearl Jam - Even Flow (Official Video)",
+      "description": "Music video by Pearl Jam performing Even Flow. (C) 1991 SONY BMG MUSIC ENTERTAINMENT",
+      "type": "video",
+      "author_name": "PearljamVEVO",
+      "author_url": "https://www.youtube.com/@PearljamVEVO",
+      "provider_name": "YouTube",
+      "provider_url": "https://www.youtube.com/",
+      "html": "<iframe width=\"200\" height=\"150\" src=\"https://www.youtube.com/embed/CxKWTzr-k6s?feature=oembed\" frameborder=\"0\" allowfullscreen=\"\" title=\"Pearl Jam - Even Flow (Official Video)\"></iframe>",
+      "width": 200,
+      "height": 150,
+      "image": "https://counter.social/system/preview_cards/images/000/001/562/original/0e9b965f1ff98f51.jpeg?1678014455",
+      "embed_url": ""
+   },
+   "poll": null
+}
+````
+
+It is also posible to [obtain access as a client](https://counter.social/apidocs/client/token/index.html) to access other API functions. Create `counterSocial2.py` to login and verify the account.
+
+1. Obtain application credentials of a given "CCBDAApplication" that will run at "http://localhost". Such application will be able to read, write, follow and push information to Counter Social.
+
+```python
+import requests
+import json
+
+
+response = requests.post('https://Counter.Social/api/v1/apps',
+              data={
+                  'client_name': 'CCBDAApplication',
+                  'redirect_uris': 'urn:ietf:wg:oauth:2.0:oob',
+                  'scopes': 'read write follow push',
+                  'website': 'http://localhost',
+              })
+
+if response.status_code != 200:
+    print (response.status_code, response.text)
+    exit(-1)
+ 
+app = json.loads(response.text)   
+print(json.dumps(app, indent=3))
+```
+
+The application data returned is:
+
+```json 
+{
+   "id": "24497",
+   "name": "CCBDAApplication",
+   "website": "http://localhost",
+   "redirect_uri": "urn:ietf:wg:oauth:2.0:oob",
+   "client_id": "0f79b817688b766d0cc94a07931d9e8df81dcca6b2609692f670c5cd3f00e7cf",
+   "client_secret": "6a43b7815eba4172a30acf4fd8b68e0637db45c20b4eac1027bcca2eea51fdb7",
+   "vapid_key": "BHeigrRLUSb-scdV4VhYu5Nt_jE5lUsk5ymF6lSo5Q2QqkUQhuDPGuMXJCtMIfWvB6c5mnRDxncXX6KXJ3jw9Ww="
+}
+```
+
+
+2. We will be using "client_id" and "client_secret" to then obtain a token that can be used for future API calls.
+
+```python
+response = requests.post('https://Counter.Social/oauth/token',
+data = {
+	 'client_id': app['client_id'],
+	 'client_secret':app['client_secret'],
+	 'redirect_uri':'urn:ietf:wg:oauth:2.0:oob',
+	 'grant_type':'client_credentials'
+})
+
+if response.status_code != 200:
+    print (response.status_code, response.text)
+    exit(-1)
+
+token = json.loads(response.text)
+print(json.dumps(token, indent=3))
+```
+
+```json
+{
+   "access_token": "131158bb36da9247a8d9a3260bd49d801d4f1786c4ff03da7c2febe695dd7611",
+   "token_type": "Bearer",
+   "scope": "read",
+   "created_at": 1678015562
+}
+```
+
+3. We can now verify that the token is valid
+
+
+```python
+response = requests.get('https://Counter.Social/api/v1/apps/verify_credentials', headers={
+    'Authorization': 'Bearer %s'%(token['access_token']),
+})
+
+if response.status_code != 200:
+    print (response.status_code, response.text)
+    exit(-1)
+
+verification = json.loads(response.text)
+print(json.dumps(verification, indent=3))
+```
+
+Obtaining the same response 
+
+```json
+{
+   "access_token": "131158bb36da9247a8d9a3260bd49d801d4f1786c4ff03da7c2febe695dd7611",
+   "token_type": "Bearer",
+   "scope": "read",
+   "created_at": 1678015562
+}
+```
+
+Another restricted API request is querying the followers of a user. The following code lists all users following the user from the first public item retrieved.
+
+```python
+
+response = requests.get('https://Counter.Social/api/v1/accounts/%s/following' % responses[0]['account']['id'],
+                        headers={'Authorization': 'Bearer %s' % token['access_token']})
+
+if response.status_code != 200:
+    print(response.status_code, response.text)
+    exit(-1)
+
+followers = json.loads(response.text)
+for item in followers:
+    print(json.dumps(item, indent=3))
+```
+
+```json 
+{
+   "id": "132467",
+   "username": "lymphonerd",
+   "acct": "lymphonerd",
+   "display_name": "PB",
+   "locked": false,
+   "bot": false,
+   "created_at": "2022-10-24T11:55:02.497Z",
+   "note": "<p>Hockey, gym, Android, Cloud, bigdata, analytics, tech, telecom enthusiast, animal lover, cancer survivor; generally not your avg computer nerd. <a href=\"https://counter.social/tags/lfgm\" class=\"mention hashtag\" rel=\"tag\">#<span>LFGM</span></a> <a href=\"https://counter.social/tags/nyr\" class=\"mention hashtag\" rel=\"tag\">#<span>NYR</span></a></p>",
+   "url": "https://counter.social/@lymphonerd",
+   "avatar": "https://counter.social/system/accounts/avatars/000/132/467/original/92e5b4a8322a4e2c.jpg?1667093825",
+   "avatar_static": "https://counter.social/system/accounts/avatars/000/132/467/original/92e5b4a8322a4e2c.jpg?1667093825",
+   "header": "https://counter.social/headers/original/missing.png",
+   "header_static": "https://counter.social/headers/original/missing.png",
+   "followers_count": 37,
+   "following_count": 43,
+   "statuses_count": 270,
+   "emojis": [],
+   "fields": [
+      {
+         "name": "Pronouns",
+         "value": "He/him/his",
+         "verified_at": null
+      },
+      {
+         "name": "Donate",
+         "value": "<a href=\"https://stupidcancer.rallybound.org/Donate\" rel=\"me nofollow noopener\" target=\"_blank\"><span class=\"invisible\">https://</span><span class=\"ellipsis\">stupidcancer.rallybound.org/Do</span><span class=\"invisible\">nate</span></a>",
+         "verified_at": null
+      }
+   ]
+}
+{
+   "id": "218682",
+   "username": "The_Rani",
+   "acct": "The_Rani",
+   "display_name": "The Rani \ud83c\udde6\ud83c\uddfa",
+   "locked": false,
+   "bot": false,
+   "created_at": "2023-02-05T01:53:43.203Z",
+   "note": "<p>First urban fantasy/crime novel in progress. Short stories also underway. Nothing published or won but working on it. Pet person. Likes plants.</p>",
+   "url": "https://counter.social/@The_Rani",
+   "avatar": "https://counter.social/system/accounts/avatars/000/218/682/original/138e4fdead7fdf3f.jpeg?1675562930",
+   "avatar_static": "https://counter.social/system/accounts/avatars/000/218/682/original/138e4fdead7fdf3f.jpeg?1675562930",
+   "header": "https://counter.social/headers/original/missing.png",
+   "header_static": "https://counter.social/headers/original/missing.png",
+   "followers_count": 11,
+   "following_count": 21,
+   "statuses_count": 58,
+   "emojis": [],
+   "fields": [
+      {
+         "name": "Location",
+         "value": "Straya",
+         "verified_at": null
+      }
+   ]
+}
+....
+```
+
 
 **Q24: How long have you been working on this session? What have been the main difficulties you have faced and how have you solved them?** Add your answers to `README.md`.
 
