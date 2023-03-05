@@ -452,7 +452,7 @@ if response.status_code != 200:
 token = json.loads(response.text)
 print(json.dumps(token, indent=3))
 ```
-
+Response:
 ```json
 {
    "access_token": "131158bb36da9247a8d9a3260bd49d801d4f1786c4ff03da7c2febe695dd7611",
@@ -478,7 +478,7 @@ verification = json.loads(response.text)
 print(json.dumps(verification, indent=3))
 ```
 
-Obtaining the same response 
+Obtaining the same response:
 
 ```json
 {
@@ -504,7 +504,7 @@ followers = json.loads(response.text)
 for item in followers:
     print(json.dumps(item, indent=3))
 ```
-
+Response:
 ```json 
 {
    "id": "132467",
@@ -563,7 +563,7 @@ for item in followers:
       }
    ]
 }
-....
+...
 ```
 
 
