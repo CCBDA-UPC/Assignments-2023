@@ -31,7 +31,8 @@ Once the AWS Console is open find the service "Amazon Comprehend"
 Launch the demo
 <p align="center"><img src="./images/Lab03-AWSComprehend.jpeg " alt="Learner lab" title="Learner lab"/></p>
 
-Play with the demo 
+Play with the demo using the provided text and parts of the "First contact with tensor flow" book.
+
 <p align="center"><img src="./images/Lab03-AWSComprehendPlay.jpeg" alt="Learner lab" title="Learner lab"/></p>
 
 ## Task 3.5: Create a python script that sends a text to AWS Comprehend and retrieves the analysis
