@@ -18,8 +18,24 @@ Provide screeenshots of the major milestones and your explanation about what you
 
 **Module 6 - Compute** Lab 3 - Introduction to Amazon EC2
 
-## Task 3.4: Challenge: use AWS Comprehend 
+## Task 3.4: use AWS Comprehend 
 
 Go to the course "AWS Academy Learner Lab", open the modules and open the "Learner Lab". Click the button "Start Lab", wait until the environment is up and then click "AWS" at the top of the window and open the AWS Console.
 
 <p align="center"><img src="./images/Lab03-LearnerLab.jpeg " alt="Learner lab" title="Learner lab"/></p>
+
+Once the AWS Console is open find the service "Amazon Comprehend"
+
+<p align="center"><img src="./images/Lab03-AWSConsole.jpeg " alt="Learner lab" title="Learner lab"/></p>
+
+Launch the demo
+<p align="center"><img src="./images/Lab03-AWSComprehend.jpeg " alt="Learner lab" title="Learner lab"/></p>
+
+Play with the demo 
+<p align="center"><img src="./images/Lab03-AWSComprehendPlay.jpeg" alt="Learner lab" title="Learner lab"/></p>
+
+**Challenge** 
+
+- Create a user that can access the AWS Comprehend Service
+- Create the API credentials for that user
+- Create a Python Script that submits a text to AWS Comprehend and obtains the list of entities used.
