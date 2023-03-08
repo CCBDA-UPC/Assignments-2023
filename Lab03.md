@@ -22,6 +22,8 @@ Provide screeenshots of the major milestones and your explanation about what you
 
 Go to the course "AWS Academy Learner Lab", open the modules and open the "Learner Lab". Click the button "Start Lab", wait until the environment is up and then click "AWS" at the top of the window and open the AWS Console.
 
+It may be the case that the lab is not visible for the browser that you may be using. Try using a different browser.
+
 <p align="center"><img src="./images/Lab03-LearnerLab.jpeg " alt="Learner lab" title="Learner lab"/></p>
 
 Once the AWS Console is open find the service "Amazon Comprehend"
