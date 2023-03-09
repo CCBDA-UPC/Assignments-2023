@@ -8,19 +8,21 @@ Provide screeenshots of the major milestones and your explanation about what you
 
 ## Task 3.1: Introduction to AWS IAM
 
-**Module 4 - AWS Cloud Security** Lab 1 - Introduction to AWS IAM
+**Module 4 - AWS Cloud Security** *Lab 1 - Introduction to AWS IAM*
 
 ## Task 3.2: Build your VPC and Launch a Web Server
 
-**Module 5 - Networking and Content Delivery** Lab 2 - Build your VPC and Launch a Web Server
+**Module 5 - Networking and Content Delivery** *Lab 2 - Build your VPC and Launch a Web Server*
 
 ## Task 3.3: Introduction to Amazon EC2
 
-**Module 6 - Compute** Lab 3 - Introduction to Amazon EC2
+**Module 6 - Compute** *Lab 3 - Introduction to Amazon EC2*
 
 ## Task 3.4: use AWS Comprehend 
 
 Go to the course "AWS Academy Learner Lab", open the modules and open the "Learner Lab". Click the button "Start Lab", wait until the environment is up and then click "AWS" at the top of the window and open the AWS Console.
+
+You may want to check the module **Sandbox** *Sandbox Environment* to find some instructions on how to use the sandbox environment.
 
 It may be the case that the lab is not visible for the browser that you may be using. Try using a different browser.
 
