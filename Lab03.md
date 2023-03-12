@@ -8,15 +8,15 @@ Provide screeenshots of the major milestones and your explanation about what you
 
 ## Task 3.1: Introduction to AWS IAM
 
-**Module 4 - AWS Cloud Security** *Lab 1 - Introduction to AWS IAM*
+Follow the lab session: **Module 4 - AWS Cloud Security** *Lab 1 - Introduction to AWS IAM*
 
 ## Task 3.2: Build your VPC and Launch a Web Server
 
-**Module 5 - Networking and Content Delivery** *Lab 2 - Build your VPC and Launch a Web Server*
+Follow the lab session: **Module 5 - Networking and Content Delivery** *Lab 2 - Build your VPC and Launch a Web Server*
 
 ## Task 3.3: Introduction to Amazon EC2
 
-**Module 6 - Compute** *Lab 3 - Introduction to Amazon EC2*
+Follow the lab session: **Module 6 - Compute** *Lab 3 - Introduction to Amazon EC2*
 
 ## Task 3.4: use AWS Comprehend 
 
