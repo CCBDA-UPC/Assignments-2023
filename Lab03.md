@@ -41,7 +41,6 @@ Play with the demo using the provided text and parts of the "First contact with 
 
 ## Task 3.5: Create a python script that sends a text to AWS Comprehend and retrieves the analysis
 
-- Obtain the credentials to use AWS Comprehend Service
 Using the "AWS Academy Learner Lab" AWS console it is only posible to execute python code in the browser terminal of the environment.
 
 ### Create a Personal Access Token on GitHub
