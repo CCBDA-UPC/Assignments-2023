@@ -34,11 +34,6 @@ Use the **private** repo named *https://github.com/CCBDA-UPC/2023-4-xx*. It need
 }
 ```
 
-1. Create some screen captures of your:
-- DyanmoDB table with the data of the new leads.
-- Make sure you have written your responses to the above questions in `README.md`.
-2. Add any comment that you consider necessary at the end of the 'README.md' file
-
 Make sure that you have updated your local GitHub repository (using the `git`commands `add`, `commit` and `push`) with all the files generated during this session. 
 
 **Before the deadline**, all team members shall push their responses to their private *https://github.com/CCBDA-UPC/2023-4-xx* repository.
