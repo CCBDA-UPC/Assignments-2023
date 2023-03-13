@@ -6,19 +6,33 @@ Go to the AWS Academy course named "AWS Academy Cloud Foundations" and follow th
 
 Provide screeenshots of the major milestones and your explanation about what you have learned or observed. It does not have to be a repetition of the course but your own thoughts and conclusions. Write your feedback in the README.md file linking the images appropiatedly.
 
-## Task 4.1: AWS Lambda
+## Task 4.1: Networking and Content Delivery
+
+- Follow the training provided at **Module 5 - Networking and Content Delivery** and answer the Knowledge Check. 
+
+## Task 4.2: AWS Lambda
 
 - Follow the lab session:  **Module 6 - Compute** *Activity - AWS Lambda*
 
-## Task 4.2: AWS Elastic Beanstalk
+## Task 4.3: AWS Elastic Beanstalk
 
 - Follow the lab session: **Module 6 - Compute** *Activity - AWS Elastic Beanstalk*
 
-## Task 4.3: Databases
+## Task 4.4: Databases
 
 - Follow the training provided at **Module 8 - Databases** and answer the Knowledge Check. 
 
 - Follow the lab session: **Module 8 - Databases** *Lab 5 - Build a Database Server*
+
+## Task 4.5: Cloud Architecture
+
+- Follow the training provided at **Module 9 - Cloud Architecture** and answer the Knowledge Check. 
+
+## Task 4.6: Networking and Content Delivery
+
+- Follow the training provided at **Module 10 - Networking and Content Delivery** and answer the Knowledge Check. 
+
+- Follow the lab session: **Module 10 - Networking and Content Delivery** *Lab 6 - Scale & Load Balance your Architecture*
 
 
 # How to submit this assignment:
