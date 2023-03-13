@@ -1,4 +1,4 @@
-# Lab session #4: Basic use of the cloud
+# Lab session #4: Basic use of the cloud (2/2)
 
 #  Tasks for Lab session #4
 
