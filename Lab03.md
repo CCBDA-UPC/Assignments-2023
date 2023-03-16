@@ -171,6 +171,8 @@ Using the [Boto3 Comprehen API](https://boto3.amazonaws.com/v1/documentation/api
 
 # How to submit this assignment:
 
+How long have you been working on this session? What have been the main difficulties you have faced and how have you solved them? Add your answers to README.md.
+
 Use the **private** repo named *https://github.com/CCBDA-UPC/2023-3-xx*. It needs to have, at least, two files `README.md` with your responses to the above questions and `authors.json` with both members email addresses:
 
 ```json5
