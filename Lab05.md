@@ -111,7 +111,7 @@ _$ export AWS_SESSION_TOKEN=<YOUR-AWS-SESSION-TOKEN>
 To obtain the values, at your CLI type the following command that will provide the necessary values
 
 ````bash
-_$ cat $HOME/.aws/credentials
+ddd_v1_w_3cWf_628331@runweb75472:~$ cat $HOME/.aws/credentials
 [default]
 aws_access_key_id = <YOUR-ACCESS-KEY-ID>
 aws_secret_access_key = <YOUR-SECRET-ACCESS-KEY>
@@ -154,7 +154,8 @@ Quit the server with CONTROL-C.
 Check that you have configured the access to DynamoDB correctly by interacting with the web app through your
 browser [http://127.0.0.1:8000/](http://127.0.0.1:8000/).
 
-Go to the DynamoDB table browser tab and verify that the **gsg-signup-table** table contains the new records that the web app
+Go to the DynamoDB table browser tab and verify that the **gsg-signup-table** table contains the new records that the
+web app
 should have created. If all the above works correctly, you are almost ready to transfer the web app to AWS Beanstalk.
 
 **NOTE I**: Make sure that you understand that we are using two types of environments: the *process environment*,
@@ -173,7 +174,8 @@ That Python virtual environment is re-created remotely by Elastic Beanstalk thro
 *requirements.txt* and other configuration that you are going to set up later.
 
 **NOTE II**: PyCharm provides a way to store and provide the environment variables for each execution. Besides, using
-PyCharm **you will be able to debug your code easily**.
+PyCharm **you will be able to debug your code easily**. See that you can include the environment variables at the
+configuration of running Django.
 
 <p align="center"><img src="./images/Lab04-pycharm-config.png" alt="AWS service" title="AWS service" width="550"/></p>
 
