@@ -361,7 +361,7 @@ You can now use the last line of `_$ python ebcreate.py`. Be careful to use the 
 as shown below
 
 ```
-_$ eb create -ip LabInstanceProfile --service-role LabRole --envvars "DEBUG=True,STARTUP_SIGNUP_TABLE=gsg-signup-table,AWS_REGION=eu-west-1,AWS_ACCESS_KEY_ID=<YOURS>,AWS_SECRET_ACCESS_KEY=<YOURS>"
+_$ eb create -ip LabInstanceProfile --service-role LabRole --envvars "DEBUG=True,STARTUP_SIGNUP_TABLE=gsg-signup-table,AWS_REGION=us-east-1,AWS_ACCESS_KEY_ID=<YOURS>,AWS_SECRET_ACCESS_KEY=<YOURS>"
 Enter Environment Name
 (default is eb-django-express-signup-dev): 
 Enter DNS CNAME prefix
@@ -525,7 +525,7 @@ Do not forget that before testing the new functionality you need to have the AWS
 Add the *unique identifier* for the AWS SNS topic to the configuration environment of your local deployment.
 
 ```bash
-_$ export NEW_SIGNUP_TOPIC="arn:aws:sns:eu-west-1:YOUR-ACCOUNT-ID:gsg-signup-notifications"
+_$ export NEW_SIGNUP_TOPIC="arn:aws:sns:us-east-1:YOUR-ACCOUNT-ID:gsg-signup-notifications"
 ```
 
 Before you forget, you can also add a new variable to the environment of the Elastic Beanstalk deployment.
@@ -538,7 +538,10 @@ Add the code below to *form/models.py* as a new operation of the model *Leads()*
 
 ```python
 def send_notification(self, email):
-    sns = boto3.client('sns', region_name=AWS_REGION)
+    sns = boto3.client('sns', region_name=AWS_REGION,
+                                      aws_access_key_id=AWS_ACCESS_KEY_ID,
+                                      aws_secret_access_key=AWS_SECRET_ACCESS_KEY,
+                                      aws_session_token=AWS_SESSION_TOKEN)
     try:
         sns.publish(
             TopicArn=NEW_SIGNUP_TOPIC,
@@ -583,7 +586,7 @@ not authorized to perform: SNS:Publish on resource*:
 "GET / HTTP/1.1" 200 7456
 New item added to database.
 Error sending AWS SNS message: An error occurred (AuthorizationError) when calling the Publish operation:
-  User: arn:aws:iam::YOUR-USER-NUMBER:root is not authorized to perform: SNS:Publish on resource: arn:aws:sns:eu-west-1:YOUR-ACCOUNT-ID:gsg-signup-notifications
+  User: arn:aws:iam::YOUR-USER-NUMBER:root is not authorized to perform: SNS:Publish on resource: arn:aws:sns:us-east-1:YOUR-ACCOUNT-ID:gsg-signup-notifications
 "POST /signup HTTP/1.1" 200 0
 ```
 
@@ -819,7 +822,7 @@ Check that document if you need extra details.
 
 Review the QuickStart
 hands-on [Getting Started in the Cloud with AWS](../../../Cloud-Computing-QuickStart/blob/master/Quick-Start-AWS.md) and
-create a new bucket in 'eu-west-1' region to deposit the web app static content. Let us name this bucket *
+create a new bucket in 'us-east-1' region to deposit the web app static content. Let us name this bucket *
 *eb-django-express-signup-YOUR-ID** (YOUR-ID can be your AWS account number or any other distinctive string because you
 will not be allowed to create two buckets with the same name, regardless the owner).
 
@@ -849,7 +852,7 @@ If you explore in your S3 console you will see that there is a URL available to 
 access the contents of that URL, making the file public if it was not already.
 
 ```
-https://s3-eu-west-1.amazonaws.com/eb-django-express-signup-YOUR-ID/CCBDA-Square.png
+https://s3-us-east-1.amazonaws.com/eb-django-express-signup-YOUR-ID/CCBDA-Square.png
 ```
 
 <p align="center"><img src="./images/Lab05-12.png " alt="S3 address" title="S3 address"/></p>
