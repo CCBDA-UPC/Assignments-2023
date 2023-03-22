@@ -90,6 +90,10 @@ before beginning work on this assignment.
 * [Task 5.3: Test the web app locally](#Task53)
 * [Task 5.4: Create the AWS Beanstalk environment and deploy a sample web app](#Task54)
 * [Task 5.5: Configure Elastic Beanstalk CLI and deploy the target web app](#Task55)
+* [Task 5.6: Use AWS Simple Notification Service in your web app](#Tasks56)
+* [Task 5.7: Create a new option to retrieve the list of leads](#Tasks57)
+* [Task 5.8: Improve the web app transfer of information](#Tasks58)
+* [Task 5.9: Deliver static content using a Content Delivery Network](#Tasks59)
 
 <a name="Task51"/>
 
@@ -466,10 +470,10 @@ You can check the health of your Elastic Beanstalk environment.
 
 ```bash
 _$ eb health
- eb-django-express-signup-dev                                                                           Ok                                                                          2023-03-22 15:59:56
-WebServer                                                                                                                                               Python 3.8 running on 64bit Amazon Linux 2/3.5.0
+  eb-django-express-signup-dev2                  Ok                  2023-03-22 16:02:05
+WebServer                              Python 3.8 running on 64bit Amazon Linux 2/3.5.0
   total      ok    warning  degraded  severe    info   pending  unknown 
-    1        1        0        0        0        0        0        0  
+    1        1        0        0        0        0        0        0    
 ```
 
 Now, go to your EC2 console and check the EC2 instance that AWS uses for the Elastic Beanstalk environment. Terminate the
@@ -493,105 +497,19 @@ selected each parameter.**
 **Q46: How long have you been working on this session? What have been the main difficulties you have faced and how have
 you solved them?** Add your answers to `README.md`.
 
-# How to submit this assignment:
 
-Use the **private** repo named *https://github.com/CCBDA-UPC/2022-4-xx*. It needs to have, at least, two
-files `README.md` with your responses to the above questions and `authors.json` with both members email addresses:
 
-```json5
-{
-  "authors": [
-    "FIRSTNAME1.LASTNAME1@estudiantat.upc.edu",
-    "FIRSTNAME2.LASTNAME2@estudiantat.upc.edu"
-  ]
-}
-```
 
-1. Create some screen captures of your:
 
-- DyanmoDB table with the data of the new leads.
-- Make sure you have written your responses to the above questions in `README.md`.
 
-2. Add any comment that you consider necessary at the end of the 'README.md' file
 
-Make sure that you have updated your local GitHub repository (using the `git`commands `add`, `commit` and `push`) with
-all the files generated during this session.
 
-**Before the deadline**, all team members shall push their responses to their private
-*https://github.com/CCBDA-UPC/2022-4-xx* repository.
 
-# Pre-lab homework
 
-In the previous session, you configured an AWS role `gsg-signup-role` to be used by the EB to run the web app.
 
-When you run the web app locally, if you are using the master account credentials that have been granted access to all
-resources you might find access problems when deploying the web app later on EB.
+<a name="Tasks56" />
 
-To locally run the web app using the `gsg-signup-role` you need to create a new IAM account that will be used for your
-programs. You can attach several roles to the account either using the console or programmatically as seen below.
-
-```
-import boto3
-
-"""
-Usage :
-    session = role_arn_to_session(
-        RoleArn='arn:aws:iam::YOUR-ACCOUNT-ID:role/example-role',
-        RoleSessionName='ExampleSessionName')
-    client = session.client('sqs')
-"""
-def role_arn_to_session(**args):
-    client = boto3.client('sts')
-    response = client.assume_role(**args)
-    return boto3.Session(
-        aws_access_key_id=response['Credentials']['AccessKeyId'],
-        aws_secret_access_key=response['Credentials']['SecretAccessKey'],
-        aws_session_token=response['Credentials']['SessionToken'])
-```
-
-For this laboratory session we are going to create a new IAM user, with only programmatic access, and we are going to
-attach the `gsg-signup-policy` using the console. You can explore using the above code for your projects.
-
-1. Open the IAM console [https://console.aws.amazon.com/iam/](https://console.aws.amazon.com/iam/), click on the **"
-   Users"** left menu option and then **"Add user"**. We are going to use "lab_sessions" as "User name", select only
-   Programmatic access and click **"Next:Permissions"**
-
-<p align="center"><img src="./images/Lab05-13.png " alt="Confirmed" title="Confirmed"/></p>
-
-2. Select "Attach existing policies directly", search "gsg-.." and select "gsg-signup-policy". Click **"Next: Review"**
-
-<p align="center"><img src="./images/Lab05-14.png " alt="Confirmed" title="Confirmed"/></p>
-
-3. Review the data and click **"Create user"**
-
-<p align="center"><img src="./images/Lab05-15.png " alt="Confirmed" title="Confirmed"/></p>
-
-4. Copy and save the Access key ID and the secret from the newly created user.
-
-Run `aws configure` and use the new Access Key ID and secret as you did for
-the [Quickstart](https://github.com/CCBDA-UPC/Cloud-Computing-QuickStart/blob/master/Quick-Start-AWS.md#install-and-configure-aws-cli-and-eb-cli).
-
-When you try to deploy your web app to EB you are going to see that the user has not enough permission to deploy the
-code and manage Elastic beanstalk. Therefore you need to add four extra policies:
-
-- AdministratorAccess-AWSElasticBeanstalk - AWS Managed policy
-- AWSElasticBeanstalkManagedUpdatesCustomerRolePolicy - AWS Managed policy
-- AWSCodeDeployRole - AWS Managed policy
-- AWSCodeDeployFullAccess - AWS Managed policy
-
-Now test your local programs with the new identity that has much-restricted permissions, as restricted as necessary to
-interact with the resources used (DynamoDB and SNS) and be able to deploy mand manage the EB to run the web app.
-
-# Tasks for Lab session #5
-
-* [Task 5.1: Use AWS Simple Notification Service in your web app](#Tasks51)
-* [Task 5.2: Create a new option to retrieve the list of leads](#Tasks52)
-* [Task 5.3: Improve the web app transfer of information](#Tasks53)
-* [Task 5.4: Deliver static content using a Content Delivery Network](#Tasks54)
-
-<a name="Tasks51" />
-
-## Task 5.1: Use AWS Simple Notification Service in your web app
+## Task 5.6: Use AWS Simple Notification Service in your web app
 
 ### Create a AWS SNS Topic
 
@@ -726,9 +644,9 @@ environment and test that it works correctly.
 
 **Q51: Has everything gone alright?** Add your answers to the `README.md` file in the responses repository.
 
-<a name="Tasks52" />
+<a name="Tasks57" />
 
-## Task 5.2: Create a new option to retrieve the list of leads
+## Task 5.7: Create a new option to retrieve the list of leads
 
 Edit the file *form/urls.py* to add the new URL and associate it to the new view *search*.
 
@@ -846,9 +764,9 @@ whatever is necessary to make it work.
 **Q52: Has everything gone alright? What have you changed?** Add your answers to the `README.md` file in the responses
 repository.
 
-<a name="Tasks53" />
+<a name="Tasks58" />
 
-## Task 5.3: Improve the web app transfer of information (optional)
+## Task 5.8: Improve the web app transfer of information (optional)
 
 You can work on this section locally in order to save expenses; you can terminate your environment from the EB console.
 
@@ -867,9 +785,9 @@ Test the changes locally, commit them to your GitHub repository.
 configuration of the different resources used by the web app? What are the tradeoffs of your solution?** Add your
 responses to `README.md`.
 
-<a name="Tasks54" />
+<a name="Tasks59" />
 
-## Task 5.4: Deliver static content using a Content Delivery Network
+## Task 5.9: Deliver static content using a Content Delivery Network
 
 ### The static content in our web app
 
@@ -1046,6 +964,19 @@ files `README.md` with your responses to the above questions and `authors.json` 
   ]
 }
 ```
+
+1. Create some screen captures of your:
+
+- DyanmoDB table with the data of the new leads.
+- Make sure you have written your responses to the above questions in `README.md`.
+
+2. Add any comment that you consider necessary at the end of the 'README.md' file
+
+Make sure that you have updated your local GitHub repository (using the `git`commands `add`, `commit` and `push`) with
+all the files generated during this session.
+
+**Before the deadline**, all team members shall push their responses to their private
+*https://github.com/CCBDA-UPC/2022-4-xx* repository.
 
 Commit the `README.md` file to your **responses repository** and commit all changes to the **web app repository**. Do
 not mix the repository containing the course answers with the repository that holds the changes to your web app.
