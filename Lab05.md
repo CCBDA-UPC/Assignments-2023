@@ -479,31 +479,19 @@ Now, go to your EC2 console and check the EC2 instance that AWS uses for the Ela
 instance. Check the health. Wait a couple of minutes and check again.
 
 
-**Q45a: What has happened? Why do you think that has happened?** Add your responses to `README.md`.
+**Q51a: What has happened? Why do you think that has happened?** Add your responses to `README.md`.
 
 <p align="center"><img src="./images/Lab04-13.png " alt="EC instances" title="EC instances"/></p>
 
 Now, to save expenses, you can terminate your environment, this time from the EB console.
 
-**Q45b: What has happened? Why do you think that has happened?** Check both EC2 and EB consoles. Add your responses
+**Q51b: What has happened? Why do you think that has happened?** Check both EC2 and EB consoles. Add your responses
 to `README.md`.
 
-**Q45c: Can you terminate the application using the command line? What is the command? if it exists.**
+**Q51c: Can you terminate the application using the command line? What is the command? if it exists.**
 
-**Q45d: What parameters have you added to the `eb create` command to create your environment? Explain why you have
+**Q51d: What parameters have you added to the `eb create` command to create your environment? Explain why you have
 selected each parameter.**
-
-**Q46: How long have you been working on this session? What have been the main difficulties you have faced and how have
-you solved them?** Add your answers to `README.md`.
-
-
-
-
-
-
-
-
-
 
 
 <a name="Tasks55" />
@@ -641,7 +629,7 @@ SNS message sent.
 Now that the web app is working in your computer, commit the changes. Deploy the new version to your Elastic beanstalk
 environment and test that it works correctly.
 
-**Q51: Has everything gone alright?** Add your answers to the `README.md` file in the responses repository.
+**Q52: Has everything gone alright?** Add your answers to the `README.md` file in the responses repository.
 
 <a name="Tasks56" />
 
@@ -760,7 +748,7 @@ runs in your computer.
 If the web app works correctly in your computer commit the changes and deploy the new version in the cloud. Change
 whatever is necessary to make it work.
 
-**Q52: Has everything gone alright? What have you changed?** Add your answers to the `README.md` file in the responses
+**Q53: Has everything gone alright? What have you changed?** Add your answers to the `README.md` file in the responses
 repository.
 
 <a name="Tasks57" />
@@ -780,7 +768,7 @@ information as well as the web app processing. Maybe you need to change the way 
 
 Test the changes locally, commit them to your GitHub repository.
 
-**Q53: Describe the strategy used to fulfill the requirements of this section. What have you changed in the code and the
+**Q54: Describe the strategy used to fulfill the requirements of this section. What have you changed in the code and the
 configuration of the different resources used by the web app? What are the tradeoffs of your solution?** Add your
 responses to `README.md`.
 
@@ -889,13 +877,13 @@ setup, we will use a URL from our domain, something like *static.mydomain.com* t
 <link href="//RANDOM-ID-FROM-CLOUDFRONT.cloudfront.net/custom.css" rel="stylesheet">
 ```
 
-**Q54: Take a couple of screenshots of you S3 and CloudFront consoles to demonstrate that everything worked all right.**
+**Q55: Take a couple of screenshots of you S3 and CloudFront consoles to demonstrate that everything worked all right.**
 Commit the changes on your web app, deploy them on Elastic beanstalk and check that it also works fine from there: **use
 Google Chrome and check the origin of the files that you are loading (attach a screen shot similar to the one below)**:
 
  <p align="center"><img src="./images/Lab05-11.png " alt="Files loaded" title="Files loaded"/></p>
 
-**Q55: How long have you been working on this session (including the optional part)? What have been the main
+**Q56: How long have you been working on this session (including the optional part)? What have been the main
 difficulties that you have faced and how have you solved them?** Add your answers to `README.md`.
 
 Add all these files to your repository and comment what you think is relevant in your session's *README.md*.
