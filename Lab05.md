@@ -235,7 +235,7 @@ configuration of running Django.
 
 <a name="Task55"/>
 
-## Task 5.5: Create the AWS Beanstalk environment and deploy the sample web app
+## Task 5.6: Configure Elastic Beanstalk CLI and deploy the target web app
 
 ### Prepare some configuration for AWS Beanstalk
 
@@ -263,65 +263,6 @@ instructions for AWS Beanstalk to start the web app and set up the timezone, amo
 Go to the course "AWS Academy Learner Lab", open the modules and open the "Learner Lab". Click the button "Start Lab",
 wait until the environment is up and then click "AWS" at the top of the window and open the AWS Console.
 
-1. At the console search for "Elastic Beanstalk" and click on **Create a new environment** and then select *Web server
-   environment*.
-
-2. Enter an *Application name*.
-
-3. For *Platform*, keep *Managed platform* selected, choose *Python* and  **Python 3.8**.
-
-4. For *Application code*, select **Upload your code** and select **Local file** choosing the zip file that you've
-   previously downloaded. Then click **Configure more options**.
-
-5. In the next screen, find the box named **Software** click *Edit* and find the *Environment properties* where you'll
-   need to add your environment variables.
-
-- DEBUG=True
-- STARTUP_SIGNUP_TABLE=gsg-signup-table
-- AWS_REGION=eu-west-1
-- AWS_ACCESS_KEY_ID=<YOUR-ACCESS-KEY-ID>
-- AWS_SECRET_ACCESS_KEY=<YOUR-SECRET-ACCESS-KEY>
-- AWS_SESSION_TOKEN=<YOUR-AWS-SESSION-TOKEN>
-- click **Save**.
-
-6. Back in the boxes screen find the one named **Security** click *Edit* and
-
-- select *LabRole* as the **Service role**
-- *LabInstanceProfile* as the **IAM instance profile**
-- click **Save**.
-- if it asks for **Presets** select *Single Instance*
-
-7. Back in the boxes screen find the one named **Notifications** and type your e-mail address to receive notifications
-   regarding the environment that you are launching. Click **Save**.
-
-8. Review all the settings and make sure all of them are set up correcty or you'll get a creation error. Click **Create
-   app**.
-
-In just a few minutes, Elastic Beanstalk provisions the networking, storage, compute and monitoring infrastructure
-required to run a scalable web application in AWS.
-
-Once you see the following status, you can click on the URL field under the environment name.
-
-<p align="center"><img src="./images/Lab04-8.png " alt="OK" title="OK"/></p>
-
-A new tab will open showing the application working in the cloud.
-
-Once the site is up and running, at any time, you can deploy a new version of your application code to the cloud
-environment.
-
-Good job! We are almost there. You can now "Terminate environment" at the "Actions" dropdown menu.
-
-<a name="Task56"/>
-
-## Task 5.6: Configure Elastic Beanstalk CLI and deploy the target web app
-
-At this point, we have the sample web app deployed. AWS EB CLI can, alternatively, help us to transfer and install our
-web app to the cloud.
-
-If you have configured "aws" command line interface you probably have a `$HOME/.aws/config` file that contains the
-credentials of your root account. Please create a new AWS user that has only the necessary set of permissions to run
-ElasticBeanstalk CLI and set the eb CLI up accordingly.
-
 You can find more information on  [**eb
 ** command line interface](https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/eb-cli3-getting-started.html).
 
@@ -334,10 +275,26 @@ _$ brew install awsebcli
 Go the the AWS Lab terminal and type
 
 ``` bash
-_$ cat $HOME/.aws/credentials
+ddd_v1_w_3cWf_628331@runweb75946:~$ cat $HOME/.aws/credentials
+[default]
+aws_access_key_id = <YOURS>
+aws_secret_access_key = <YOURS>
+aws_session_token = <YOURS>
 ```
 
-Go to your terminal window and write:
+You need to copy the three lines on your local machine to be able to run the `eb` commands. **Caveat:** everytime you
+start a new lab session at "AWS Academy Learner Lab" you'll have different values for the variables. Therefore, you need
+to update the files
+
+``` bash
+_$ cat $HOME/.aws/credentials
+[profile eb-cli]
+aws_access_key_id = <YOURS>
+aws_secret_access_key = <YOURS>
+aws_session_token = <YOURS>
+```
+
+Go to your locola machine window and write:
 
 ```
 _$ eb init -i
@@ -373,7 +330,7 @@ Do you want to set up SSH for your instances?
 
 That has initialized the container and now you will be creating an environment for the application:
 
-Running eb init creates a configuration file at `.elasticbeanstalk/config.yml`. You can edit it if necessary.
+Running `eb init` creates a configuration file at `.elasticbeanstalk/config.yml`. You can edit it if necessary.
 
 ```
 branch-defaults:
@@ -396,55 +353,51 @@ global:
   workspace_type: Application
 ```
 
-To create the resources required to run the application and upload the application code we need to type the following
-command, using the parameter `--service-role` to grant the role's permissions to the EC2s running the code.
-
-Be careful to use the environment variables enclosed in quotes as shown below
+You can now use the last line of `_$  python ebcreate.py`. Be careful to use the environment variables enclosed in quotes as shown below
 
 ```
-_$ eb create -ip LabInstanceProfile --service-role LabRole  --elb-type application --envvars "DEBUG=True,STARTUP_SIGNUP_TABLE=gsg-signup-table,AWS_REGION=eu-west-1,AWS_ACCESS_KEY_ID=<YOURS>,AWS_SECRET_ACCESS_KEY=<YOURS>"
-
+_$ eb create -ip LabInstanceProfile --service-role LabRole --envvars "DEBUG=True,STARTUP_SIGNUP_TABLE=gsg-signup-table,AWS_REGION=eu-west-1,AWS_ACCESS_KEY_ID=<YOURS>,AWS_SECRET_ACCESS_KEY=<YOURS>"
 Enter Environment Name
-(default is eb-django-express-signup-dev): ebsignupEnv
+(default is eb-django-express-signup-dev): 
 Enter DNS CNAME prefix
-(default is ebsignupEnv): 
+(default is eb-django-express-signup-dev): 
 
 Would you like to enable Spot Fleet requests for this environment? (y/N): n
-Creating application version archive "app-2f25-230320_194513023230".
-Uploading eb-django-express-signup/app-2f25-230320_194513023230.zip to S3. This may take a while.
+Creating application version archive "app-3a7a-230322_130829342705".
+Uploading eb-django-express-signup/app-3a7a-230322_130829342705.zip to S3. This may take a while.
 Upload Complete.
-Environment details for: ebsignupEnv
+Environment details for: eb-django-express-signup-dev
   Application name: eb-django-express-signup
   Region: us-east-1
-  Deployed Version: app-2f25-230320_194513023230
-  Environment ID: e-t9nvm9citv
+  Deployed Version: app-3a7a-230322_130829342705
+  Environment ID: e-e4txpkj2gc
   Platform: arn:aws:elasticbeanstalk:us-east-1::platform/Python 3.8 running on 64bit Amazon Linux 2/3.5.0
   Tier: WebServer-Standard-1.0
-  CNAME: ebsignupEnv.us-east-1.elasticbeanstalk.com
-  Updated: 2023-03-20 18:45:19.025000+00:00
+  CNAME: eb-django-express-signup-dev.us-east-1.elasticbeanstalk.com
+  Updated: 2023-03-22 12:08:34.747000+00:00
 Printing Status:
-2023-03-20 18:45:17    INFO    createEnvironment is starting.
-2023-03-20 18:45:19    INFO    Using elasticbeanstalk-us-east-1-339019491866 as Amazon S3 storage bucket for environment data.
-2023-03-20 18:45:41    INFO    Created security group named: sg-0e9197860be76bdf2
-2023-03-20 18:45:56    INFO    Created load balancer named: awseb-e-t-AWSEBLoa-1QZB3U1W7SEFN
-2023-03-20 18:45:56    INFO    Created security group named: awseb-e-t9nvm9citv-stack-AWSEBSecurityGroup-Z122HW8D2JO9
-2023-03-20 18:45:56    INFO    Created Auto Scaling launch configuration named: awseb-e-t9nvm9citv-stack-AWSEBAutoScalingLaunchConfiguration-CHo7xVD2AwyD
-2023-03-20 18:47:00    INFO    Created Auto Scaling group named: awseb-e-t9nvm9citv-stack-AWSEBAutoScalingGroup-60AFMBNTMR2I
-2023-03-20 18:47:00    INFO    Waiting for EC2 instances to launch. This may take a few minutes.
-2023-03-20 18:47:15    INFO    Created Auto Scaling group policy named: arn:aws:autoscaling:us-east-1:339019491866:scalingPolicy:c8feb6af-0e11-4dda-882c-dfe19a9247f2:autoScalingGroupName/awseb-e-t9nvm9citv-stack-AWSEBAutoScalingGroup-60AFMBNTMR2I:policyName/awseb-e-t9nvm9citv-stack-AWSEBAutoScalingScaleUpPolicy-Mxg8ZpnnO1dj
-2023-03-20 18:47:16    INFO    Created Auto Scaling group policy named: arn:aws:autoscaling:us-east-1:339019491866:scalingPolicy:c6edfcd6-63b7-4a94-8239-ef9358844e52:autoScalingGroupName/awseb-e-t9nvm9citv-stack-AWSEBAutoScalingGroup-60AFMBNTMR2I:policyName/awseb-e-t9nvm9citv-stack-AWSEBAutoScalingScaleDownPolicy-5xdkNI0FZgVv
-2023-03-20 18:47:16    INFO    Created CloudWatch alarm named: awseb-e-t9nvm9citv-stack-AWSEBCloudwatchAlarmLow-1V4KANZFKXE5O
-2023-03-20 18:47:16    INFO    Created CloudWatch alarm named: awseb-e-t9nvm9citv-stack-AWSEBCloudwatchAlarmHigh-1I7A41E16UKAJ
-2023-03-20 18:47:28    INFO    Instance deployment successfully generated a 'Procfile'.
-2023-03-20 18:47:31    INFO    Instance deployment completed successfully.
-2023-03-20 18:48:34    INFO    Successfully launched environment: ebsignupEnv
-
-
-
+2023-03-22 12:08:33    INFO    createEnvironment is starting.
+2023-03-22 12:08:34    INFO    Using elasticbeanstalk-us-east-1-339019491866 as Amazon S3 storage bucket for environment data.
+2023-03-22 12:08:56    INFO    Created security group named: sg-0d70b8d1505806862
+2023-03-22 12:09:12    INFO    Created security group named: awseb-e-e4txpkj2gc-stack-AWSEBSecurityGroup-JTWLDPSXXML2
+2023-03-22 12:09:12    INFO    Created target group named: arn:aws:elasticloadbalancing:us-east-1:339019491866:targetgroup/awseb-AWSEB-WFFQUFQVZIIV/92fdc6ef6d85ad51
+2023-03-22 12:09:12    INFO    Created Auto Scaling launch configuration named: awseb-e-e4txpkj2gc-stack-AWSEBAutoScalingLaunchConfiguration-eDTlUv9Ozzf2
+2023-03-22 12:10:44    INFO    Created Auto Scaling group named: awseb-e-e4txpkj2gc-stack-AWSEBAutoScalingGroup-J8U3LF3MYTK8
+2023-03-22 12:10:44    INFO    Waiting for EC2 instances to launch. This may take a few minutes.
+2023-03-22 12:10:44    INFO    Created Auto Scaling group policy named: arn:aws:autoscaling:us-east-1:339019491866:scalingPolicy:fa2371c3-99e6-43b6-b0a6-10cec1b5c5fe:autoScalingGroupName/awseb-e-e4txpkj2gc-stack-AWSEBAutoScalingGroup-J8U3LF3MYTK8:policyName/awseb-e-e4txpkj2gc-stack-AWSEBAutoScalingScaleDownPolicy-Y69pSpbqbGZT
+2023-03-22 12:10:44    INFO    Created Auto Scaling group policy named: arn:aws:autoscaling:us-east-1:339019491866:scalingPolicy:9b2c927f-12f1-422f-98ae-04070d539ff0:autoScalingGroupName/awseb-e-e4txpkj2gc-stack-AWSEBAutoScalingGroup-J8U3LF3MYTK8:policyName/awseb-e-e4txpkj2gc-stack-AWSEBAutoScalingScaleUpPolicy-hfUYQg51DGoH
+2023-03-22 12:11:02    INFO    Created CloudWatch alarm named: awseb-e-e4txpkj2gc-stack-AWSEBCloudwatchAlarmLow-M0W3OCBQQQRK
+2023-03-22 12:11:02    INFO    Created CloudWatch alarm named: awseb-e-e4txpkj2gc-stack-AWSEBCloudwatchAlarmHigh-XNJGV2TSR47V
+2023-03-22 12:11:03    INFO    Created load balancer named: arn:aws:elasticloadbalancing:us-east-1:339019491866:loadbalancer/app/awseb-AWSEB-1H25DNY6U7PFI/d07c6a088565ad97
+2023-03-22 12:11:18    INFO    Created Load Balancer listener named: arn:aws:elasticloadbalancing:us-east-1:339019491866:listener/app/awseb-AWSEB-1H25DNY6U7PFI/d07c6a088565ad97/7116fb05f63ac70c
+2023-03-22 12:11:31    INFO    Instance deployment successfully generated a 'Procfile'.
+2023-03-22 12:11:33    INFO    Instance deployment completed successfully.
+2023-03-22 12:11:50    INFO    Application available at eb-django-express-signup-dev.us-east-1.elasticbeanstalk.com.
+2023-03-22 12:11:51    INFO    Successfully launched environment: eb-django-express-signup-dev
 ```
 
 Please, wait until you see the last message stating that the environment is successfully launched and
-use `http://eb-django-ccbda.eu-west-1.elasticbeanstalk.com/` to access the project.
+use `eb open` to access the project on your browser.
 
 <p align="center"><img src="./images/Lab04-14.png " alt="Sample web app" title="Sample web app"/></p>
 
@@ -1105,3 +1058,15 @@ all the files generated during this session.
 **Before the deadline**, all team members shall push their responses to their private
 *https://github.com/CCBDA-UPC/2022-5-xx* repository.
 
+===========
+
+
+
+<p align="center"><img src="./images/Lab04-8.png " alt="OK" title="OK"/></p>
+
+A new tab will open showing the application working in the cloud.
+
+Once the site is up and running, at any time, you can deploy a new version of your application code to the cloud
+environment.
+
+Good job! We are almost there. You can now "Terminate environment" at the "Actions" dropdown menu.
