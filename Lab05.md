@@ -475,9 +475,9 @@ WebServer                              Python 3.8 running on 64bit Amazon Linux 
     1        1        0        0        0        0        0        0    
 ```
 
-Now, go to your EC2 console and check the EC2 instance that AWS uses for the Elastic Beanstalk environment. Terminate the
+Now, go to your EC2 console and check the EC2 instance that AWS uses for the Elastic Beanstalk environment. Terminate
+the
 instance. Check the health. Wait a couple of minutes and check again.
-
 
 **Q51a: What has happened? Why do you think that has happened?** Add your responses to `README.md`.
 
@@ -508,7 +508,7 @@ subscription that tells AWS SNS where and how to send the notifications.
 
 **To set up AWS SNS notifications**
 
-Open the AWS SNS console at [https://console.aws.amazon.com/sns/v2/home](https://console.aws.amazon.com/sns/v2/home).
+At the "AWS" console search for "Simple Notification Service"
 
 - Choose **Create topic**.
 - For Topic name, type *gsg-signup-notifications*. Choose **Standard** type and **Create topic**.
