@@ -282,9 +282,10 @@ aws_secret_access_key = <YOURS>
 aws_session_token = <YOURS>
 ```
 
-You need to copy the three lines on your local machine to be able to run the `eb` commands. **Caveat:** everytime you
-start a new lab session at "AWS Academy Learner Lab" you'll have different values for the variables. Therefore, you need
-to update the files
+You need to copy the three lines on your local machine to be able to run the `eb` commands.
+
+**CAVEAT:** everytime you start a new lab session at "AWS Academy Learner Lab" you'll have different values for the
+variables. Therefore, you need to update the files
 
 ``` bash
 _$ cat $HOME/.aws/credentials
@@ -353,7 +354,8 @@ global:
   workspace_type: Application
 ```
 
-You can now use the last line of `_$  python ebcreate.py`. Be careful to use the environment variables enclosed in quotes as shown below
+You can now use the last line of `_$ python ebcreate.py`. Be careful to use the environment variables enclosed in quotes
+as shown below
 
 ```
 _$ eb create -ip LabInstanceProfile --service-role LabRole --envvars "DEBUG=True,STARTUP_SIGNUP_TABLE=gsg-signup-table,AWS_REGION=eu-west-1,AWS_ACCESS_KEY_ID=<YOURS>,AWS_SECRET_ACCESS_KEY=<YOURS>"
@@ -396,18 +398,7 @@ Printing Status:
 2023-03-22 12:11:51    INFO    Successfully launched environment: eb-django-express-signup-dev
 ```
 
-Please, wait until you see the last message stating that the environment is successfully launched and
-use `eb open` to access the project on your browser.
-
-<p align="center"><img src="./images/Lab04-14.png " alt="Sample web app" title="Sample web app"/></p>
-
-Please, note that issuing the above command the application code has been uploaded. See the line stating
-
-```
-Creating application version archive "app-190310_224408".
-```
-
-Do a little research on the CLI params and create the environment with a single instance, with no load-balancer.
+Please, wait until you see the last message stating that the environment is successfully launched.
 
 ### Test the Web App
 
@@ -437,26 +428,29 @@ You can check that the values are correct using `eb printenv`.
 _$ eb printenv
 Environment Variables:
      AWS_ACCESS_KEY_ID = *****
-     AWS_REGION = eu-west-1
+     AWS_REGION =  us-east-1
      AWS_SECRET_ACCESS_KEY = ********<YOURS>*********
-     DEBUG = true
+     AWS_SESSION_TOKEN = ********<YOURS>*********
+     DEBUG = True
      STARTUP_SIGNUP_TABLE = gsg-signup-table
-
 ```
 
 Of course, you would try to catch such an error in development. However, if an error does get through to production, or
-you want to update your app, Elastic Beanstalk makes it fast and easy to redeploy. Just modify your code, commit the
-changes to your **LOCAL** repository, and issue "deploy" again.
+you want to update your app, Elastic Beanstalk makes it fast and easy to redeploy. Just modify your code, and issue "
+deploy" again.
 
 ```
 _$ eb deploy
-Creating application version archive "app-b2f2-180205_205630".
-Uploading eb-django-express-signup/app-b2f2-180205_205630.zip to S3. This may take a while.
+Creating application version archive "app-3a7a-230322_155801427873".
+Uploading eb-django-express-signup/app-3a7a-230322_155801427873.zip to S3. This may take a while.
 Upload Complete.
-INFO: Environment update is starting.
-INFO: Deploying new version to instance(s).
-INFO: New application version was deployed to running EC2 instances.
-INFO: Environment update completed successfully.
+2023-03-22 14:58:05    INFO    Environment update is starting.      
+2023-03-22 14:58:10    INFO    Deploying new version to instance(s).
+2023-03-22 14:58:14    INFO    Instance deployment successfully generated a 'Procfile'.
+2023-03-22 14:58:18    INFO    Instance deployment completed successfully.
+2023-03-22 14:58:24    INFO    New application version was deployed to running EC2 instances.
+2023-03-22 14:58:24    INFO    Environment update completed successfully.
+
 ```
 
 Since ElasticBeanstalk infrastructure maintenante is part of AWS responsibilities, that includes updating the operating
@@ -464,19 +458,23 @@ system, web server, application server, etc. Such updates may interfere with you
 when it is the best moment to use the following command that updates the environment to the most recent platform
 version.
 
-```
+```bash
 _$ eb upgrade
 ```
 
-### One final step
+You can check the health of your Elastic Beanstalk environment.
 
-Before ending this session, please go to your Elastic Beanstalk console, unfold the **Actions** button and **Save
-Configuration**. It will be useful for you to continue with the same environment in the next Lab session.
+```bash
+_$ eb health
+ eb-django-express-signup-dev                                                                           Ok                                                                          2023-03-22 15:59:56
+WebServer                                                                                                                                               Python 3.8 running on 64bit Amazon Linux 2/3.5.0
+  total      ok    warning  degraded  severe    info   pending  unknown 
+    1        1        0        0        0        0        0        0  
+```
 
-<p align="center"><img src="./images/Lab04-12.png " alt="Save configuration" title="Save configuration"/></p>
+Now, go to your EC2 console and check the EC2 instance that AWS uses for the Elastic Beanstalk environment. Terminate the
+instance. Check the health. Wait a couple of minutes and check again.
 
-Go to your EC2 console and check the EC2 instance that AWS uses for the Elastic Beanstalk environment. Terminate the
-instance. Check what happens in your EB console. Wait a couple of minutes and check again your EC2 console.
 
 **Q45a: What has happened? Why do you think that has happened?** Add your responses to `README.md`.
 
@@ -1059,10 +1057,6 @@ all the files generated during this session.
 *https://github.com/CCBDA-UPC/2022-5-xx* repository.
 
 ===========
-
-
-
-<p align="center"><img src="./images/Lab04-8.png " alt="OK" title="OK"/></p>
 
 A new tab will open showing the application working in the cloud.
 
