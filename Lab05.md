@@ -88,12 +88,11 @@ before beginning work on this assignment.
 * [Task 5.1: Download the code for the Web App](#Task51)
 * [Task 5.2: Create a DynamoDB Table](#Task52)
 * [Task 5.3: Test the web app locally](#Task53)
-* [Task 5.4: Create the AWS Beanstalk environment and deploy a sample web app](#Task54)
-* [Task 5.5: Configure Elastic Beanstalk CLI and deploy the target web app](#Task55)
-* [Task 5.6: Use AWS Simple Notification Service in your web app](#Tasks56)
-* [Task 5.7: Create a new option to retrieve the list of leads](#Tasks57)
-* [Task 5.8: Improve the web app transfer of information](#Tasks58)
-* [Task 5.9: Deliver static content using a Content Delivery Network](#Tasks59)
+* [Task 5.4: Configure Elastic Beanstalk CLI and deploy the target web app](#Task54)
+* [Task 5.5: Use AWS Simple Notification Service in your web app](#Tasks55)
+* [Task 5.6: Create a new option to retrieve the list of leads](#Tasks56)
+* [Task 5.7: Improve the web app transfer of information](#Tasks57)
+* [Task 5.8: Deliver static content using a Content Delivery Network](#Tasks58)
 
 <a name="Task51"/>
 
@@ -237,9 +236,9 @@ configuration of running Django.
 
 <p align="center"><img src="./images/Lab04-pycharm-config.png" alt="AWS service" title="AWS service" width="550"/></p>
 
-<a name="Task55"/>
+<a name="Task54"/>
 
-## Task 5.6: Configure Elastic Beanstalk CLI and deploy the target web app
+## Task 5.4: Configure Elastic Beanstalk CLI and deploy the target web app
 
 ### Prepare some configuration for AWS Beanstalk
 
@@ -507,9 +506,9 @@ you solved them?** Add your answers to `README.md`.
 
 
 
-<a name="Tasks56" />
+<a name="Tasks55" />
 
-## Task 5.6: Use AWS Simple Notification Service in your web app
+## Task 5.5: Use AWS Simple Notification Service in your web app
 
 ### Create a AWS SNS Topic
 
@@ -644,9 +643,9 @@ environment and test that it works correctly.
 
 **Q51: Has everything gone alright?** Add your answers to the `README.md` file in the responses repository.
 
-<a name="Tasks57" />
+<a name="Tasks56" />
 
-## Task 5.7: Create a new option to retrieve the list of leads
+## Task 5.6: Create a new option to retrieve the list of leads
 
 Edit the file *form/urls.py* to add the new URL and associate it to the new view *search*.
 
@@ -764,9 +763,9 @@ whatever is necessary to make it work.
 **Q52: Has everything gone alright? What have you changed?** Add your answers to the `README.md` file in the responses
 repository.
 
-<a name="Tasks58" />
+<a name="Tasks57" />
 
-## Task 5.8: Improve the web app transfer of information (optional)
+## Task 5.7: Improve the web app transfer of information (optional)
 
 You can work on this section locally in order to save expenses; you can terminate your environment from the EB console.
 
@@ -785,9 +784,9 @@ Test the changes locally, commit them to your GitHub repository.
 configuration of the different resources used by the web app? What are the tradeoffs of your solution?** Add your
 responses to `README.md`.
 
-<a name="Tasks59" />
+<a name="Tasks58" />
 
-## Task 5.9: Deliver static content using a Content Delivery Network
+## Task 5.8: Deliver static content using a Content Delivery Network
 
 ### The static content in our web app
 
