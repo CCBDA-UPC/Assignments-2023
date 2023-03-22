@@ -150,6 +150,30 @@ aws_session_token = <YOUR-AWS-SESSION-TOKEN>
 
 **DO NOT EVER PUSH AWS CREDENTIALS TO YOUR PRIVATE REPOSITORY !!!**
 
+You can use the script named `ebcreate.py` by previously adding the correct data at `env.txt`:
+
+```
+_$ cat env.txt
+AWS_REGION = us-east-1
+DEBUG = True
+STARTUP_SIGNUP_TABLE = gsg-signup-table
+aws_access_key_id = <yours>
+aws_secret_access_key = <yours>
+aws_session_token = <yours>
+
+_$  python ebcreate.py 
+export AWS_REGION=us-east-1
+export DEBUG=True
+export STARTUP_SIGNUP_TABLE=gsg-signup-table
+export AWS_ACCESS_KEY_ID=<yours>
+export AWS_SECRET_ACCESS_KEY=<yours>
+export AWS_SESSION_TOKEN=<yours>
+eb create -ip LabInstanceProfile --service-role LabRole  --elb-type application --envvars "AWS_REGION=us-east-1,DEBUG=True,STARTUP_SIGNUP_TABLE=gsg-signup-table,AWS_ACCESS_KEY_ID=<yours>,AWS_SECRET_ACCESS_KEY=<yours>,AWS_SESSION_TOKEN=<yours>"
+```
+
+Copy the lines beginning by `export` and paste them on you console. Forget about the line beginning by `eb create` for
+the moment.
+
 Next, create a **new Python 3.8 virtual environment** specially for this web app and install the packages required to
 run it. (**MS-Windows OS** users read the note at the end of this section)
 
