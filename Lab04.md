@@ -28,11 +28,11 @@ Provide screeenshots of the major milestones and your explanation about what you
 
 - Follow the training provided at **Module 9 - Cloud Architecture** and answer the Knowledge Check. 
 
-## Task 4.6: Networking and Content Delivery
+## Task 4.6:  Auto Scaling and Monitoring
 
-- Follow the training provided at **Module 10 - Networking and Content Delivery** and answer the Knowledge Check. 
+- Follow the training provided at **Module 10 - Auto Scaling and Monitoring** and answer the Knowledge Check. 
 
-- Follow the lab session: **Module 10 - Networking and Content Delivery** *Lab 6 - Scale & Load Balance your Architecture*
+- Follow the lab session: **Module 10 -  Auto Scaling and Monitoring** *Lab 6 - Scale & Load Balance your Architecture*
 
 
 # How to submit this assignment:
