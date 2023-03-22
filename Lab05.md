@@ -263,8 +263,8 @@ instructions for AWS Beanstalk to start the web app and set up the timezone, amo
 Go to the course "AWS Academy Learner Lab", open the modules and open the "Learner Lab". Click the button "Start Lab",
 wait until the environment is up and then click "AWS" at the top of the window and open the AWS Console.
 
-You can find more information on  [**eb
-** command line interface](https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/eb-cli3-getting-started.html).
+You can find more information on  **[eb
+command line interface](https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/eb-cli3-getting-started.html)**.
 
 On macOS you can use
 
