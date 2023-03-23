@@ -576,61 +576,34 @@ def signup(request):
     return HttpResponse('', status=status)
 ```
 
-Close the file and execute the Django web app locally.
-
-Now you can see that the new record appears inserted but when you try to add a new lead appears an error *User: ... is
-not authorized to perform: SNS:Publish on resource*:
-
-```bash
-(eb-virt)_$ python manage.py runserver
-"GET / HTTP/1.1" 200 7456
-New item added to database.
-Error sending AWS SNS message: An error occurred (AuthorizationError) when calling the Publish operation:
-  User: arn:aws:iam::YOUR-USER-NUMBER:root is not authorized to perform: SNS:Publish on resource: arn:aws:sns:us-east-1:YOUR-ACCOUNT-ID:gsg-signup-notifications
-"POST /signup HTTP/1.1" 200 0
-```
-
-To fix that error we need to grant access to the IAM profile that we created in the previous session. Go
-to [https://console.aws.amazon.com/iam](https://console.aws.amazon.com/iam) and check the JSON contents of the
-*gsg-signup-policy*: it only grants access to DynamoDB to put an item:
-
-```json
-{
-  "Version": "2012-10-17",
-  "Statement": [
-    {
-      "Sid": "VisualEditor0",
-      "Effect": "Allow",
-      "Action": "dynamodb:PutItem",
-      "Resource": "*"
-    }
-  ]
-}
-```
-
-We can change the Action property to a list where we grant the sns:Publish action to the list of allowed actions for
-*gsg-signup-policy*.
-
-```json
-"Action":["sns:Publish", "dynamodb:PutItem"]
-```
-
-Instead of editing the JSON policy definition by hand you can use the visual editor and add check marks to the actions
-of each resource that you want your web app to use.
-
-<p align="center"><img src="./images/Lab05-5.png " alt="IAM" title="IAM"/></p>
-
-Once you have stored the changes in the IAM policy, you can post a new record. This time you see no error and you
+Close the file and execute the Django web app locally. You can post a new record. This time you see no error and you
 receive a notification in your e-mail.
 
 ```bash
-Existing item updated to database.
+New item added to database.
 SNS message sent.
-"POST /signup HTTP/1.1" 409 0
+"POST /signup HTTP/1.1" 200 0
 ```
 
 Now that the web app is working in your computer, commit the changes. Deploy the new version to your Elastic beanstalk
-environment and test that it works correctly.
+environment and test that it works correctly. For that, you need to update the Elastinc Beanstalk Environment
+
+
+
+```bash
+_$ eb printenv
+
+_$ eb setenv "NEW_SIGNUP_TOPIC=arn:aws:sns:us-east-1:YOUR-ACCOUNT-ID:gsg-signup-notifications"
+```
+
+
+
+
+
+
+
+
+
 
 **Q52: Has everything gone alright?** Add your answers to the `README.md` file in the responses repository.
 
