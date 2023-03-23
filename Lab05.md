@@ -153,7 +153,20 @@ aws_session_token = <YOUR-AWS-SESSION-TOKEN>
 
 **DO NOT EVER PUSH AWS CREDENTIALS TO YOUR PRIVATE REPOSITORY !!!**
 
-You can use the script named `ebcreate.py` by previously adding the correct data at `env.txt`:
+You can use the script named `ebcreate.py` 
+```python
+env = []
+with open('env.txt','r') as fd:
+    for l in fd.readlines():
+        (k,v)=l.split('=',1)
+        k = k.upper().strip()
+        v = v.strip()
+        env.append(f'{k}={v}')
+        print(f'export {k}={v}')
+print ('eb create -ip LabInstanceProfile --service-role LabRole  --elb-type application --envvars "%s"'%','.join(env))
+```
+
+by previously adding the correct data at `env.txt`:
 
 ```
 _$ cat env.txt
@@ -591,9 +604,16 @@ environment and test that it works correctly. For that, you need to update the E
 
 
 ```bash
-_$ eb printenv
-
 _$ eb setenv "NEW_SIGNUP_TOPIC=arn:aws:sns:us-east-1:YOUR-ACCOUNT-ID:gsg-signup-notifications"
+_$ eb printenv
+Environment Variables:
+     AWS_ACCESS_KEY_ID = *****
+     AWS_REGION =  us-east-1
+     AWS_SECRET_ACCESS_KEY = ********<YOURS>*********
+     AWS_SESSION_TOKEN = ********<YOURS>*********
+     DEBUG = True
+     STARTUP_SIGNUP_TABLE = gsg-signup-table
+     NEW_SIGNUP_TOPIC = arn:aws:sns:us-east-1:YOUR-ACCOUNT-ID:gsg-signup-notifications
 ```
 
 
