@@ -783,8 +783,7 @@ Bootstrap 4 CSS, we are already using a CDN to retrieve the CSS and send it to t
 *maxcdn.bootstrapcdn.com* as their CDN distribution point.
 
 ```html
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
-          crossorigin="anonymous">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
 ```
 
 We can now add our CSS code to customize the look and feel of our web app even more. In that same file, add the
