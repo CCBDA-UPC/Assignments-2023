@@ -77,7 +77,7 @@ speeds. CloudFront CDN works seamlessly with other AWS services including **AWS 
 **, **Elastic Load Balancing** or **AWS EC2** as origins for your applications, and **AWS Lambda** to run custom code
 close to final viewers.
 
-# Tasks for Lab session #4
+# Tasks for Lab session #5
 
 ## Prerequisites
 
@@ -683,7 +683,11 @@ values from the table.
 ```python
 def get_leads(self, domain, preview):
     try:
-        dynamodb = boto3.resource('dynamodb', region_name=AWS_REGION)
+        dynamodb = boto3.resource('dynamodb',
+                                      region_name=AWS_REGION,
+                                      aws_access_key_id=AWS_ACCESS_KEY_ID,
+                                      aws_secret_access_key=AWS_SECRET_ACCESS_KEY,
+                                      aws_session_token=AWS_SESSION_TOKEN)
         table = dynamodb.Table('gsg-signup-table')
     except Exception as e:
         logger.error(
@@ -774,20 +778,12 @@ responses to `README.md`.
 
 ### The static content in our web app
 
-If you check line 11 of the file *form/templates/generic.html* you will see that, instead of loading in our server
+If you check line 11 of the file *templates/generic.html* you will see that, instead of loading in our server
 Bootstrap 4 CSS, we are already using a CDN to retrieve the CSS and send it to the final users. Bootstrap uses
 *maxcdn.bootstrapcdn.com* as their CDN distribution point.
 
 ```html
-    <!-- https://www.bootstrapcdn.com/ -->
-<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet"
-      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-<!-- Bootstrap Lumen theme -->
-<link href="https://maxcdn.bootstrapcdn.com/bootswatch/4.0.0-beta.3/lumen/bootstrap.min.css" rel="stylesheet"
-      integrity="sha384-lBO0+E/aIJhpRIYjP6dJ1mNYgo3hhUBPcF74XRfOM27g7WmDuitolvnUENdDG4QI" crossorigin="anonymous">
-<!-- Bootstrap fonts -->
-<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
-      integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
 ```
 
 We can now add our CSS code to customize the look and feel of our web app even more. In that same file, add the
@@ -958,9 +954,6 @@ files `README.md` with your responses to the above questions and `authors.json` 
 Make sure that you have updated your local GitHub repository (using the `git`commands `add`, `commit` and `push`) with
 all the files generated during this session.
 
-**Before the deadline**, all team members shall push their responses to their private
-*https://github.com/CCBDA-UPC/2022-4-xx* repository.
-
 Commit the `README.md` file to your **responses repository** and commit all changes to the **web app repository**. Do
 not mix the repository containing the course answers with the repository that holds the changes to your web app.
 
@@ -969,12 +962,3 @@ all the files generated during this session.
 
 **Before the deadline**, all team members shall push their responses to their private
 *https://github.com/CCBDA-UPC/2022-5-xx* repository.
-
-===========
-
-A new tab will open showing the application working in the cloud.
-
-Once the site is up and running, at any time, you can deploy a new version of your application code to the cloud
-environment.
-
-Good job! We are almost there. You can now "Terminate environment" at the "Actions" dropdown menu.
