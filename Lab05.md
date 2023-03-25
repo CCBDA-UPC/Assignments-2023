@@ -954,9 +954,6 @@ files `README.md` with your responses to the above questions and `authors.json` 
 Make sure that you have updated your local GitHub repository (using the `git`commands `add`, `commit` and `push`) with
 all the files generated during this session.
 
-**Before the deadline**, all team members shall push their responses to their private
-*https://github.com/CCBDA-UPC/2022-4-xx* repository.
-
 Commit the `README.md` file to your **responses repository** and commit all changes to the **web app repository**. Do
 not mix the repository containing the course answers with the repository that holds the changes to your web app.
 
@@ -965,12 +962,3 @@ all the files generated during this session.
 
 **Before the deadline**, all team members shall push their responses to their private
 *https://github.com/CCBDA-UPC/2022-5-xx* repository.
-
-===========
-
-A new tab will open showing the application working in the cloud.
-
-Once the site is up and running, at any time, you can deploy a new version of your application code to the cloud
-environment.
-
-Good job! We are almost there. You can now "Terminate environment" at the "Actions" dropdown menu.
