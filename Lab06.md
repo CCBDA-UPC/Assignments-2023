@@ -28,7 +28,7 @@ _$ pip install scrapy
 
 Once the Scrapy package is installed, you can use the Scrapy shell to do some testing before programming your web data extraction. In the following example, we download the home page of ["The New York Times"](https://www.nytimes.com/), take a look at the structure of the HTML and extract the title of the main articles and their authors. As you can see we can use a CSS syntax to select the HTML elements of the page.
 
-```
+```python
 fetch("https://www.nytimes.com/")
 print(response.text)
 response.css("article a h2::text").extract_first()
@@ -45,8 +45,8 @@ To find the "search path" you may want to use Google Chrome, find the URL, inspe
 
 Once you have explored the page you can write a custom spyder to programatically extract data from HTML pages.
 
-```
-scrapy startproject nytscraper
+```bash
+_$ scrapy startproject nytscraper
 ```
 
 The above command will create the following file structure in the current directory:
@@ -129,7 +129,7 @@ In the above code, every invocation of parse yields a JSON record containing som
 To obtain the results of parsing the home page of the New York Times we can type at the command line below. We use the *name* of the parser and tell it to output the result to a file that will contain a list of JSON records.
 
 ```bash
-scrapy crawl nytimes -o nytimes.json
+_$ scrapy crawl nytimes -o nytimes.json
 
 ```
 
@@ -339,7 +339,7 @@ Change the code according to your question, create a new view and add it to the 
 
 Use the **private** repo named *https://github.com/CCBDA-UPC/2023-6-xx*. It needs to have, at least, two files `README.md` with your responses to the above questions and `authors.json` with both members email addresses:
 
-```json5
+```json
 {
   "authors": [
     "FIRSTNAME1.LASTNAME1@estudiantat.upc.edu",
