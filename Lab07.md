@@ -13,7 +13,7 @@ This hands-on helps you to classify images using labels. [Cloud Vision API](http
 ## Task 7.1:  Google Cloud Vision
 
 
-### 8.3.1 Cloud Platform sign up
+### 7.3.1 Cloud Platform sign up
 It exists a free trial for this service, to fully enjoy the benefits of Google’s Cloud platform the best option is to get a business trial, with $300 worth of free credit for this year. That amount is far more than enough for the expected needs on this subject’s scope and will give you time enough to explore other features.
 
 You need to have a google account, in case you don't have one, please, register.
@@ -21,7 +21,7 @@ Once the registration process is finished, follow this [quick start guide]( http
 
 The project creation process takes a few seconds, after finishing it will appear in our list. It is time to select the new project and enable the Cloud Vision API that is the tool we will use during this hands-on. Finally, we need to set up some credentials that will be the way we authenticate to enable the communication: This can be done selecting “Credentials” in the left menu and simply clicking over the blue button saying “Create credentials” and choosing the “service account key” option.  Select JSON as your key type. Once completed, your service account key is downloaded to your browser's default location.
 
-### 8.3.2 Python environment setup
+### 7.3.2 Python environment setup
 
 Let's now execute access the service using a program. The scripts and demo files needed can be downloaded from the official Google Cloud Platform GitHub repository, and only a few more changes will be needed to be ready.
 
@@ -57,7 +57,7 @@ oauth2client.client.ApplicationDefaultCredentialsError: The Application Default 
 ```
 
 
-### 8.3.3 Quick Start: Running the Example
+### 7.3.3 Quick Start: Running the Example
 
 <p align="center"><img src="./images/Lab10-Tweet-MN.png" alt="Tweet" title="Tweet"/></p>
 
@@ -91,7 +91,7 @@ metropolitan area - 0.748
 server - 0.723
 ```
 
-### 8.3.4 Classify images
+### 7.3.4 Classify images
 
 Now that you know how to use the Google cloud vision service what about analyzing the pictures posted on Twitter by famous people? You can, instead, scrape a website and analyze the pictures published there.
 
