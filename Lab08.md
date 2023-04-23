@@ -10,13 +10,29 @@ This hands-on section guides you through the creation of a load balancer attache
 
 ### Configure the EC2 serving as a seed for the rest of the example
 
-Go to [AWS console](https://eu-west-1.console.aws.amazon.com/ec2/) and launch a new EC2 instance:
- 
-1. Use Ubuntu 18.x as base AMI
- 
-2. Select `t2.nano` instance type
+Go to the course "AWS Academy Learner Lab", open the modules and open the "Learner Lab". Click the button "Start Lab",
+wait until the environment is up and then click "AWS" at the top of the window and open the AWS Console.
 
-3. For the instance, details create 1 instance on your default VPC using the subnet of *any availability zone* (No preference). Enable auto-assign a public IP. At the bottom of the page unfold "Advanced details" and copy the following code "as text". You can check for errors, when the EC2 is running, at `/var/log/cloud-init-output.log`.
+Go to [AWS console](https://us-east-1.console.aws.amazon.com/ec2/home?region=us-east-1#Home:) and launch a new EC2 instance:
+ 
+1. Use Ubuntu 22.04 as base AMI
+ 
+2. Select `t2.micro` instance type (Free tier elegible)
+3. Name the instance as ``apache-web-server`
+
+4Allow ssh traffic from my IP and allow HTTP/HTTPS traffic from the Internet
+
+5. For the instance, details create 1 instance on your default VPC using the subnet of *any availability zone* (No preference)
+
+6. Enable auto-assign a public IP. 
+
+6. Add 8GB of storage space.
+7. Add some tags for tracking. 
+    - Project = ccbda bootstrap
+    - Name = apache-web-server
+    - Cost-center = laboratory
+7. Create a new security group named `web-sg` and open port 80 for everyone and port 22 for your current IP address.
+8. At the bottom of the page unfold "Advanced details" and copy the following code at the **"User data"**  text box. You can check for errors, when the EC2 is running, at `/var/log/cloud-init-output.log`.
  
     ````bash
     #! /bin/bash -ex
@@ -33,22 +49,18 @@ Go to [AWS console](https://eu-west-1.console.aws.amazon.com/ec2/) and launch a 
     sudo find /var/www -type d -exec chmod 2775 {} +
     sudo find /var/www/ -type f -exec chmod 0664 {} +
     ````
-    <p align="center"><img src="./images/Lab06-AdvancedDetails.png" alt="Script" title="Script"/></p>
-    
-4. Add 8GB of storage space.
-5. Add some tags for tracking. 
-    - Project = ccbda bootstrap
-    - Name = apache-web-server
-    - Cost-center = laboratory
-6. Create a new security group named `web-sg` and open port 80 for everyone and port 22 for your current IP address.
+
+Check that you have an Apache2 web server running by typing on your Internet Browser http://YOUR-SERVER-IP 
 
 ### Create a load balancer
 
-Once the EC2 is being lauched, create an HTTP/HTTPS load balancer.
+Once the EC2 is being lauched, create a "Target Group" and an "Application Load Balancer".
 
-<p align="center"><img src="./images/Lab06-LoadBalancer.png" alt="ELB" title="ELB"/></p>
+1. "Create target group" named ``primary-apache-web-server-target`` and include the EC2 instance created previously.
 
-1. Name it `load-balancer`, with an internet-facing scheme. Add protocols HTTP and HTTPS using standard ports and select ALL availability zones from your current region. Add the following tags for tracking. 
+2. Create a security group named ``load-balancer-sg``. Add HTTP and HTTPS from "Anywhere-IPv4" as inbound rules.
+
+1. Check the target group and select the action "Associate with a load balancer" of type "Aplication Load Balancer". Name it `load-balancer`, with an internet-facing scheme. Add protocols HTTP and HTTPS using standard ports and select ALL availability zones from your current region. Add the following tags for tracking. 
     - Project = ccbda bootstrap
     - Cost-center = laboratory
 2. You would normally obtain an SSL certificate from AWS. For that, you need to have control over the DNS of the server's domain. Select `Upload a certificate to ACM` and, **for testing purposes**, use the following unix command to create a  and create a self-signed certificate for CN (Common Name) "myserver.info". The generated information looks like the text below. Leave the certificate chain empty and select ``ELBSecurityPolicy-TLS-1-2-2017-01`` as the security policy. 
@@ -77,9 +89,8 @@ Once the EC2 is being lauched, create an HTTP/HTTPS load balancer.
     7Qrhmkr8Pl353hCmoqH06zzkeHsPD+XxQN9ANL4lsBJdo8r3Z+F6SQ==
     -----END RSA PRIVATE KEY-----
     ```
-6. Attach the ELB to the ``load-balancer-sg`` security group that you are creating. That has open HTTP and HTTPS protocols.
+6. Attach the ELB to the ``load-balancer-sg`` security group.
 
-7. Create a new target group of type "Instance" and name it ``primary-apache-web-server-target`` using HTTP protocol and attach the EC2 instance named ``apache-web-server``.
 
 8. Check the load balancer state and wait while it says "provisioning". Once the ELB state is "active", go to the "Description" tab and copy the DNS name assigned http://load-balancer-1334015960.eu-west-1.elb.amazonaws.com/ and paste it in your browser. 
 
