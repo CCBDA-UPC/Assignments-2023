@@ -20,7 +20,7 @@ Go to [AWS console](https://us-east-1.console.aws.amazon.com/ec2/home?region=us-
 2. Select `t2.micro` instance type (Free tier elegible)
 3. Name the instance as ``apache-web-server`
 
-4Allow ssh traffic from my IP and allow HTTP/HTTPS traffic from the Internet
+4. Allow ssh traffic from my IP and allow HTTP/HTTPS traffic from the Internet
 
 5. For the instance, details create 1 instance on your default VPC using the subnet of *any availability zone* (No preference)
 
