@@ -15,7 +15,7 @@ wait until the environment is up and then click "AWS" at the top of the window a
 
 Go to [AWS console](https://us-east-1.console.aws.amazon.com/ec2/home?region=us-east-1#Home:) 
 
-1. Create a security group named ``web-sg``. Add HTTP from "Anywhere-IPv4" as inbound rules.
+1. Create a security group named ``web-sg``. Add HTTP from "Anywhere-IPv4" and SSH from your current IP address as inbound rules.
 
 2. Launch a new EC2 instance. Use Ubuntu 22.04 as base AMI
  
@@ -32,7 +32,6 @@ Go to [AWS console](https://us-east-1.console.aws.amazon.com/ec2/home?region=us-
     - Project = ccbda bootstrap
     - Name = apache-web-server
     - Cost-center = laboratory
-7. Create a new security group named `web-sg` and open port 80 for everyone and port 22 for your current IP address.
 8. At the bottom of the page unfold "Advanced details" and copy the following code at the **"User data"**  text box. You can check for errors, when the EC2 is running, at `/var/log/cloud-init-output.log`.
  
     ````bash
