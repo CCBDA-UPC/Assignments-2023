@@ -21,7 +21,7 @@ Go to [AWS console](https://us-east-1.console.aws.amazon.com/ec2/home?region=us-
  
 2. Select `t2.micro` instance type (Free tier elegible)
 
-3. Name the instance as `web-server`
+3. Name the instance as `apache-web-server`
 
 4. Select ``web-sg`` as the security group in the Networking settings.
 
