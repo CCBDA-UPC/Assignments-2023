@@ -13,16 +13,17 @@ This hands-on section guides you through the creation of a load balancer attache
 Go to the course "AWS Academy Learner Lab", open the modules and open the "Learner Lab". Click the button "Start Lab",
 wait until the environment is up and then click "AWS" at the top of the window and open the AWS Console.
 
-Go to [AWS console](https://us-east-1.console.aws.amazon.com/ec2/home?region=us-east-1#Home:) and launch a new EC2 instance:
- 
-1. Use Ubuntu 22.04 as base AMI
+Go to [AWS console](https://us-east-1.console.aws.amazon.com/ec2/home?region=us-east-1#Home:) 
+
+1. Create a security group named ``web-sg``. Add HTTP from "Anywhere-IPv4" as inbound rules.
+
+2. Launch a new EC2 instance. Use Ubuntu 22.04 as base AMI
  
 2. Select `t2.micro` instance type (Free tier elegible)
-3. Name the instance as ``apache-web-server`
 
-4. Allow ssh traffic from my IP and allow HTTP/HTTPS traffic from the Internet
+3. Name the instance as `web-server`
 
-5. For the instance, details create 1 instance on your default VPC using the subnet of *any availability zone* (No preference)
+4. Select ``web-sg`` as the security group in the Networking settings.
 
 6. Enable auto-assign a public IP. 
 
@@ -90,7 +91,6 @@ Once the EC2 is being lauched, create a "Target Group" and an "Application Load 
     -----END RSA PRIVATE KEY-----
     ```
 6. Attach the ELB to the ``load-balancer-sg`` security group.
-
 
 8. Check the load balancer state and wait while it says "provisioning". Once the ELB state is "active", go to the "Description" tab and copy the DNS name assigned http://load-balancer-1334015960.eu-west-1.elb.amazonaws.com/ and paste it in your browser. 
 
