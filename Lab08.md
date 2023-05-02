@@ -162,8 +162,6 @@ Check how many EC2 instances are running and, once they are ready, use the ELB U
 
 **Q815.** Create a piece of code (Python or bash) to reproduce the above steps required to launch a new set of web servers with a load balancer. Start using the AMI that you have already created.
 
-
-**Q816.** Create a piece of code (Python or bash) to reproduce the above steps required to launch a new AWS Lambda function and AWS API gateway.
  
 Write your answers in the `README.md` file for this session.
 
